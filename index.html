@@ -1,73 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BatoKod</title>
-    <link rel="icon" href="assets/images/bateau_fav.ico">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
+    <link rel="icon" href="assets/images/bateau_fav.ico" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
     <!-- ── Barre du haut ── -->
     <header id="topbar">
-        <div id="topbar-left">
-            <span id="game-title">3026 le jeu tip top</span>
-            <span class="sep">|</span>
-            <span>🏠 <span id="homeName">—</span></span>
-        </div>
-        <div id="topbar-resources">
-            <div class="top-res">🌲 <span id="qty-BOISIUM">—</span></div>
-            <div class="top-res">⚙️ <span id="qty-FERONIUM">—</span></div>
-            <div class="top-res">⚫ <span id="qty-CHARBONIUM">—</span></div>
-        </div>
-        <div id="topbar-right">
-            <span>⚡ Mouvements : <strong id="movesLeft">—</strong></span>
-        </div>
+      <div id="topbar-left">
+        <span id="game-title">3026 le jeu tip top</span>
+        <span class="sep">|</span>
+        <span>🏠 <span id="homeName">—</span></span>
+      </div>
+      <div id="topbar-resources">
+        <div class="top-res">🌲 <span id="qty-BOISIUM">—</span></div>
+        <div class="top-res">⚙️ <span id="qty-FERONIUM">—</span></div>
+        <div class="top-res">⚫ <span id="qty-CHARBONIUM">—</span></div>
+      </div>
+      <div id="topbar-right">
+        <span>⚡ Mouvements : <strong id="movesLeft">—</strong></span>
+      </div>
     </header>
 
     <!-- ── Corps principal ── -->
     <div id="main">
+      <!-- Panneau gauche -->
+      <aside id="panel-left">
+        <section class="panel-card">
+          <div class="panel-title">⬆️ Upgrade entrepôt</div>
+          <p id="storageName"></p>
+          <div id="upgrade-cost"></div>
+          <button class="btn" id="UPG_storage">⬆️ Upgrader</button>
+        </section>
 
-        <!-- Panneau gauche -->
-        <aside id="panel-left">
+        <section class="panel-card">
+          <div class="panel-title">⬆️ Upgrade bateau</div>
+          <p id="boatName"></p>
+          <div id="upgrade-ship-cost"></div>
+          <button class="btn-blue" id="UPG_ship">⬆️ Upgrader</button>
+        </section>
+      </aside>
 
-            <section class="panel-card">
-                <div class="panel-title">⬆️ Upgrade entrepôt</div>
-                <p id="storageName"></p>
-                <div id="upgrade-cost"></div>
-                <button class="btn" id="UPG_storage">⬆️ Upgrader</button>
-            </section>
+      <!-- Carte centrale -->
+      <div id="map-area">
+        <canvas id="map"></canvas>
+        <div id="tooltip" class="tooltip"></div>
+      </div>
 
-            <section class="panel-card">
-                <div class="panel-title">⬆️ Upgrade bateau</div>
-                <p id="boatName"></p>
-                <div id="upgrade-ship-cost"></div>
-                <button class="btn-blue" id="UPG_ship">⬆️ Upgrader</button>
-            </section>
-        </aside>
-
-        <!-- Carte centrale -->
-        <div id="map-area">
-            <canvas id="map"></canvas>
-            <div id="tooltip" class="tooltip"></div>
-        </div>
-
-        <!-- Panneau droit -->
-        <aside id="panel-right">
-            <section class="panel-card">
-                <div class="panel-title">Marketplace</div>
-                <div class="upgrade-item"><span>💰Gold</span><span id="currentGold">-</span></div>
-                <button class="btn" id="seeOffers">Actualiser les offres</button>
-                <div id="offers-panel"></div>
-                <button class="btn" id="sell3kf">Vendre 1000 feronium pour 5u</button>
-            </section>
-
-        </aside>
-
+      <!-- Panneau droit -->
+      <aside id="panel-right">
+        <section class="panel-card">
+          <div class="panel-title">Marketplace</div>
+          <div class="upgrade-item">
+            <span>💰Gold</span><span id="currentGold">-</span>
+          </div>
+          <button class="btn" id="seeOffers">Actualiser les offres</button>
+          <div id="offers-panel"></div>
+          <button class="btn" id="sell3kf">
+            Vendre 1000 feronium pour 15u
+          </button>
+        </section>
+      </aside>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>

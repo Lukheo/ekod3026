@@ -32,7 +32,10 @@ const COLORS = {
 function getViewBounds() {
   const keys = Object.keys(state.cells);
   if (!keys.length) return { minX: -5, maxX: 5, minY: -5, maxY: 5 };
-  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  let minX = Infinity,
+    maxX = -Infinity,
+    minY = Infinity,
+    maxY = -Infinity;
   for (const k of keys) {
     const [x, y] = k.split(",").map(Number);
     if (x < minX) minX = x;
@@ -52,7 +55,7 @@ function render() {
   const b = getViewBounds();
   const cols = b.maxX - b.minX + 1;
   const rows = b.maxY - b.minY + 1;
-  canvas.width  = Math.max(cols * CELL_SIZE, canvas.parentElement.clientWidth);
+  canvas.width = Math.max(cols * CELL_SIZE, canvas.parentElement.clientWidth);
   canvas.height = Math.max(rows * CELL_SIZE, canvas.parentElement.clientHeight);
 
   ctx.fillStyle = COLORS.UNKNOWN;
@@ -74,7 +77,7 @@ function render() {
     const py = (state.ship.y - b.minY) * CELL_SIZE;
     const cx = px + CELL_SIZE / 2;
     const cy = py + CELL_SIZE / 2;
-    const r  = CELL_SIZE * 0.3;
+    const r = CELL_SIZE * 0.3;
 
     ctx.beginPath();
     ctx.arc(cx, cy, r + 4, 0, Math.PI * 2);
@@ -94,9 +97,9 @@ function render() {
 
 // ───────────── Éléments HTML ──────────────────────────────────
 const movesLeftDisplay = document.getElementById("movesLeft");
-const homeNameDisplay  = document.getElementById("homeName");
-const upgStorageBtn    = document.getElementById("UPG_storage");
-const seeOffersBtn    = document.getElementById("seeOffers");
+const homeNameDisplay = document.getElementById("homeName");
+const upgStorageBtn = document.getElementById("UPG_storage");
+const seeOffersBtn = document.getElementById("seeOffers");
 const currentGoldDisplay = document.getElementById("currentGold");
 const currentBoatName = document.getElementById("boatName");
 const currentStorageName = document.getElementById("storageName");
@@ -112,22 +115,28 @@ function getDetails() {
       const data = res.data;
 
       movesLeftDisplay.innerHTML = data.ship.availableMove;
-      homeNameDisplay.innerHTML  = data.home.name;
+      homeNameDisplay.innerHTML = data.home.name;
       currentGoldDisplay.innerHTML = data.money;
-      currentBoatName.innerHTML = "🚢 "+data.ship.level.name + " ── Niv."+ data.ship.level.id;
-      currentStorageName.innerHTML = "🏠 "+data.storage.name + " ── Niv."+ data.storage.levelId;
-
+      currentBoatName.innerHTML =
+        "🚢 " + data.ship.level.name + " ── Niv." + data.ship.level.id;
+      currentStorageName.innerHTML =
+        "🏠 " + data.storage.name + " ── Niv." + data.storage.levelId;
 
       for (const r of data.resources) {
-        const el     = document.getElementById(`qty-${r.type}`);
+        const el = document.getElementById(`qty-${r.type}`);
         const maxQty = data.storage?.maxResources?.[r.type];
-        if (el) el.textContent = maxQty ? `${r.quantity} / ${maxQty}` : r.quantity;
+        if (el)
+          el.textContent = maxQty ? `${r.quantity} / ${maxQty}` : r.quantity;
       }
 
       // ── Position du bateau sur la carte ──
       const pos = data.ship.currentPosition;
       state.ship = { x: pos.x, y: pos.y };
-      state.cells[`${pos.x},${pos.y}`] = { type: pos.type, zone: pos.zone, visited: false };
+      state.cells[`${pos.x},${pos.y}`] = {
+        type: pos.type,
+        zone: pos.zone,
+        visited: false,
+      };
 
       render();
     });
@@ -140,8 +149,8 @@ axios
   })
   .then((res) => {
     console.log(res.data);
-    const next      = res.data;
-    const emojis    = { BOISIUM: "🌲", FERONIUM: "⚙️", CHARBONIUM: "⚫" };
+    const next = res.data;
+    const emojis = { BOISIUM: "🌲", FERONIUM: "⚙️", CHARBONIUM: "⚫" };
     const container = document.getElementById("upgrade-cost");
 
     Object.entries(next.costResources).forEach(([type, qty]) => {
@@ -160,8 +169,8 @@ axios
   })
   .then((res) => {
     console.log(res.data);
-    const next      = res.data;
-    const emojis    = { BOISIUM: "🌲", FERONIUM: "⚙️", CHARBONIUM: "⚫" };
+    const next = res.data;
+    const emojis = { BOISIUM: "🌲", FERONIUM: "⚙️", CHARBONIUM: "⚫" };
     const container = document.getElementById("upgrade-ship-cost");
 
     // container.innerHTML = `<p style="margin-bottom:8px">🚢 ${next.name ?? '—'} — Niv. ${next.id - 1 ?? '—'}</p>`;
@@ -181,7 +190,7 @@ function upShip() {
     .put(
       `${baseUrl}/ship/upgrade`,
       { level: 2 },
-      { headers: { "codinggame-id": token } }
+      { headers: { "codinggame-id": token } },
     )
     .then(() => getDetails())
     .catch((err) => console.error(err.response?.data || err.message));
@@ -195,12 +204,13 @@ function move(direction) {
     .post(
       `${baseUrl}/ship/move`,
       { direction },
-      { headers: { "codinggame-id": token } }
+      { headers: { "codinggame-id": token } },
     )
     .then((res) => {
-      console.log(res.data)
+      console.log(res.data);
       const data = res.data;
-      const pos  = data.position;
+      const pos = data.position;
+      const { processShipMoveResponse } = require("./sync_map");
 
       // Marquer l'ancienne case comme visitée
       if (state.ship) {
@@ -209,13 +219,21 @@ function move(direction) {
       }
 
       // Ajouter les nouvelles cases découvertes
-      for (const cell of (data.discoveredCells || [])) {
-        state.cells[`${cell.x},${cell.y}`] = { type: cell.type, zone: cell.zone, visited: false };
+      for (const cell of data.discoveredCells || []) {
+        state.cells[`${cell.x},${cell.y}`] = {
+          type: cell.type,
+          zone: cell.zone,
+          visited: false,
+        };
       }
 
       // Mettre à jour la position du bateau
       state.ship = { x: pos.x, y: pos.y };
-      state.cells[`${pos.x},${pos.y}`] = { type: pos.type, zone: pos.zone, visited: false };
+      state.cells[`${pos.x},${pos.y}`] = {
+        type: pos.type,
+        zone: pos.zone,
+        visited: false,
+      };
 
       // Mettre à jour les mouvements restants
       movesLeftDisplay.innerHTML = data.energy;
@@ -224,6 +242,7 @@ function move(direction) {
     })
     .catch((err) => console.error(err.response?.data || err.message));
 }
+await processShipMoveResponse(apiResponse);
 
 // ───────────── Upgrade storage ────────────────────────────────
 function upStorage() {
@@ -231,7 +250,7 @@ function upStorage() {
     .put(
       `${baseUrl}/storage/upgrade`,
       {},
-      { headers: { "codinggame-id": token } }
+      { headers: { "codinggame-id": token } },
     )
     .then(() => getDetails())
     .catch((err) => console.error(err.response?.data || err.message));
@@ -242,71 +261,81 @@ upgStorageBtn.addEventListener("click", upStorage);
 // ───────────── get marketplace offers ────────────────────────────────
 
 function getOffers() {
-  axios.get(`${baseUrl}/marketplace/offers`, {
-    headers: { "codinggame-id": token }
-  })
-  .then(res => {
-    const offers = res.data;
+  axios
+    .get(`${baseUrl}/marketplace/offers`, {
+      headers: { "codinggame-id": token },
+    })
+    .then((res) => {
+      const offers = res.data;
 
-    console.log("🛒 OFFRES :");
-    console.log(offers);
-    const offersPanel = document.getElementById("offers-panel")
-    offersPanel.innerHTML = ""    
+      console.log("🛒 OFFRES :");
+      console.log(offers);
+      const offersPanel = document.getElementById("offers-panel");
+      offersPanel.innerHTML = "";
 
-    offers.forEach(o => {
-    const div = document.createElement("div");
-      div.className = "offer-item";
-      div.innerHTML = `<span>${o.resourceType}</span><span>📦${o.quantityIn}</span><span style="color:#fbbf24">💰 ${o.pricePerResource}/u</span><br><span>👤 ${o.owner.name}</span><br><span>${o.id}</span>`;
-      offersPanel.appendChild(div);
-    });
-  })
-  .catch(err => console.error(err.response?.data || err.message));
+      offers.forEach((o) => {
+        const div = document.createElement("div");
+        div.className = "offer-item";
+        div.innerHTML = `<span>${o.resourceType}</span><span>📦${o.quantityIn}</span><span style="color:#fbbf24">💰 ${o.pricePerResource}/u</span><br><span>👤 ${o.owner.name}</span><br><span>${o.id}</span>`;
+        offersPanel.appendChild(div);
+      });
+      getDetails();
+    })
+    .catch((err) => console.error(err.response?.data || err.message));
 }
 
-seeOffersBtn.addEventListener("click", getOffers)
+seeOffersBtn.addEventListener("click", getOffers);
 
 function createOffer(resourceType, quantityIn, pricePerResource) {
-  axios.post(
-    `${baseUrl}/marketplace/offers`,
-    { resourceType, quantityIn, pricePerResource },
-    { headers: { "codinggame-id": token } }
-  )
-  .then(res => console.log("📦 Offre créée :", res.data))
-  .catch(err => console.error(err.response?.data || err.message));
+  axios
+    .post(
+      `${baseUrl}/marketplace/offers`,
+      { resourceType, quantityIn, pricePerResource },
+      { headers: { "codinggame-id": token } },
+    )
+    .then((res) => console.log("📦 Offre créée :", res.data))
+    .catch((err) => console.error(err.response?.data || err.message));
 }
-document.getElementById("sell3kf").addEventListener("click", function() {
-  createOffer("FERONIUM", 1000, 5);
+document.getElementById("sell3kf").addEventListener("click", function () {
+  createOffer("FERONIUM", 1000, 15);
 });
 
 function deleteOffer(offerId) {
-  axios.delete(`${baseUrl}/marketplace/offers/${offerId}`, {
-    headers: { "codinggame-id": token }
-  })
-  .then(() => console.log("Offre supprimée"))
-  .catch(err => console.error(err.response?.data || err.message));
+  axios
+    .delete(`${baseUrl}/marketplace/offers/${offerId}`, {
+      headers: { "codinggame-id": token },
+    })
+    .then(() => console.log("Offre supprimée"))
+    .catch((err) => console.error(err.response?.data || err.message));
 }
 
 function buyOffer(offerId, quantity) {
-  axios.post(
-    `${baseUrl}/marketplace/purchases`,
-    {
-      offerId: offerId,
-      quantity: quantity
-    },
-    {
-      headers: { "codinggame-id": token }
-    }
-  )
-  .then(res => {
-    console.log("✅ Achat réussi :", res.data);
-  })
-  .catch(err => console.error(err.response?.data || err.message));
+  axios
+    .post(
+      `${baseUrl}/marketplace/purchases`,
+      {
+        offerId: offerId,
+        quantity: quantity,
+      },
+      {
+        headers: { "codinggame-id": token },
+      },
+    )
+    .then((res) => {
+      console.log("✅ Achat réussi :", res.data);
+    })
+    .catch((err) => console.error(err.response?.data || err.message));
 }
+
+// buyOffer("c42d711e-dd67-4365-8ea7-3168670452a5", 700);
 
 // ───────────── Clavier ────────────────────────────────────────
 document.addEventListener("keydown", (e) => {
   const map = { ArrowUp: "N", ArrowDown: "S", ArrowLeft: "W", ArrowRight: "E" };
-  if (map[e.key]) { e.preventDefault(); move(map[e.key]); }
+  if (map[e.key]) {
+    e.preventDefault();
+    move(map[e.key]);
+  }
 });
 
 // ───────────── Init ───────────────────────────────────────────
