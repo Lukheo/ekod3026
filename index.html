@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BatoKod</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    
+    <h1>3026</h1>
+
+    <h2>Mouvements: <span id="movesLeft"></span></h2>
+    <h2>Home: <span id="homeName"></span></h2>
+
+    <div id="entrepot">
+        <h2>Entrepôt</h2>
+        <div class="resource"><span>BOISIUM</span><span id="qty-BOISIUM">—</span></div>
+        <div class="resource"><span>FERONIUM</span><span id="qty-FERONIUM">—</span></div>
+        <div class="resource"><span>CHARBONIUM</span><span id="qty-CHARBONIUM">—</span></div>
+    </div>
+
+    <div class="map-container">
+          <canvas id="map"></canvas>
+          <div id="tooltip" class="tooltip"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>

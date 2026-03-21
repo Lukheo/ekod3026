@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 24px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+}
+h2 span:last-child {
+    font-family: 'Consolas', monospace;
+    font-size: 15px;
+    color: #4ade80;
+}
+
+/* ── Entrepôt ───────────────────────────────── */
+#entrepot {
+    margin-top: 24px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 18px;
+    max-width: 320px;
+}
+
+.resource {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.resource:last-child {
+    margin-bottom: 0;
+}
+
+.resource span:first-child {
+    font-weight: 600;
+    flex: 1;
+}
+
+.resource span:last-child {
+    font-family: 'Consolas', monospace;
+    font-size: 15px;
+    color: #4ade80;
+}
