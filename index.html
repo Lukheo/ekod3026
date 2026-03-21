@@ -4,25 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BatoKod</title>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" href="assets/images/bateau_fav.ico">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>3026</h1>
 
-    <h2>Mouvements: <span id="movesLeft"></span></h2>
-    <h2>Home: <span id="homeName"></span></h2>
+    <!-- ── Barre du haut ── -->
+    <header id="topbar">
+        <div id="topbar-left">
+            <span id="game-title">3026 le jeu tip top</span>
+            <span class="sep">|</span>
+            <span>🏠 <span id="homeName">—</span></span>
+        </div>
+        <div id="topbar-resources">
+            <div class="top-res">🌲 <span id="qty-BOISIUM">—</span></div>
+            <div class="top-res">⚙️ <span id="qty-FERONIUM">—</span></div>
+            <div class="top-res">⚫ <span id="qty-CHARBONIUM">—</span></div>
+        </div>
+        <div id="topbar-right">
+            <span>⚡ Mouvements : <strong id="movesLeft">—</strong></span>
+        </div>
+    </header>
 
-    <div id="entrepot">
-        <h2>Entrepôt</h2>
-        <div class="resource"><span>BOISIUM</span><span id="qty-BOISIUM">—</span></div>
-        <div class="resource"><span>FERONIUM</span><span id="qty-FERONIUM">—</span></div>
-        <div class="resource"><span>CHARBONIUM</span><span id="qty-CHARBONIUM">—</span></div>
-    </div>
+    <!-- ── Corps principal ── -->
+    <div id="main">
 
-    <div class="map-container">
-          <canvas id="map"></canvas>
-          <div id="tooltip" class="tooltip"></div>
+        <!-- Panneau gauche -->
+        <aside id="panel-left">
+
+            <section class="panel-card">
+                <div class="panel-title">⬆️ Upgrade entrepôt</div>
+                <p id="storageName"></p>
+                <div id="upgrade-cost"></div>
+                <button class="btn" id="UPG_storage">⬆️ Upgrader</button>
+            </section>
+
+            <section class="panel-card">
+                <div class="panel-title">⬆️ Upgrade bateau</div>
+                <p id="boatName"></p>
+                <div id="upgrade-ship-cost"></div>
+                <button class="btn-blue" id="UPG_ship">⬆️ Upgrader</button>
+            </section>
+        </aside>
+
+        <!-- Carte centrale -->
+        <div id="map-area">
+            <canvas id="map"></canvas>
+            <div id="tooltip" class="tooltip"></div>
+        </div>
+
+        <!-- Panneau droit -->
+        <aside id="panel-right">
+            <section class="panel-card">
+                <div class="panel-title">Marketplace</div>
+                <div class="upgrade-item"><span>💰Gold</span><span id="currentGold">-</span></div>
+                <button class="btn" id="seeOffers">Actualiser les offres</button>
+                <div id="offers-panel"></div>
+            </section>
+
+        </aside>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

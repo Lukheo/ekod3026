@@ -1,68 +1,243 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background: #0d1117;
-    color: #e6edf3;
+    background: #0a0e14;
+    color: #c9d1d9;
     font-family: 'Segoe UI', sans-serif;
-    padding: 24px;
+    font-size: 13px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-h2 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #8b949e;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 12px;
-}
-h2 span:last-child {
-    font-family: 'Consolas', monospace;
-    font-size: 15px;
-    color: #4ade80;
-}
-
-/* ── Entrepôt ───────────────────────────────── */
-#entrepot {
-    margin-top: 24px;
-    background: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 10px;
-    padding: 18px;
-    max-width: 320px;
-}
-
-.resource {
+/* ── Topbar ─────────────────────────────────── */
+#topbar {
     display: flex;
     align-items: center;
-    padding: 10px 14px;
+    justify-content: space-between;
+    height: 44px;
+    padding: 0 16px;
     background: #0d1117;
-    border: 1px solid #30363d;
-    border-radius: 6px;
-    margin-bottom: 8px;
+    border-bottom: 1px solid #1c2a3a;
+    flex-shrink: 0;
+}
+
+#game-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #58a6ff;
+    letter-spacing: 2px;
+}
+
+.sep { color: #30363d; margin: 0 10px; }
+
+#topbar-resources {
+    display: flex;
+    gap: 20px;
+}
+
+.top-res {
+    background: #161b22;
+    border: 1px solid #1c2a3a;
+    border-radius: 5px;
+    padding: 4px 12px;
+    font-family: 'Consolas', monospace;
     font-size: 13px;
+    color: #e6edf3;
 }
 
-.resource:last-child {
-    margin-bottom: 0;
+#topbar-right {
+    font-size: 12px;
+    color: #8b949e;
 }
 
-.resource span:first-child {
-    font-weight: 600;
+#topbar-right strong { color: #fbbf24; }
+
+/* ── Main layout ─────────────────────────────── */
+#main {
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
     flex: 1;
+    overflow: hidden;
 }
+
+/* ── Panneaux latéraux ───────────────────────── */
+#panel-left, #panel-right {
+    background: #0d1117;
+    border-right: 1px solid #1c2a3a;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+}
+
+#panel-right { border-right: none; border-left: 1px solid #1c2a3a; }
+
+.panel-card {
+    background: #161b22;
+    border: 1px solid #1c2a3a;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.panel-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #58a6ff;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #1c2a3a;
+}
+
+/* ── Ressources ──────────────────────────────── */
+.resource {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 10px;
+    background: #0d1117;
+    border: 1px solid #1c2a3a;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.resource:last-child { margin-bottom: 0; }
 
 .resource span:last-child {
     font-family: 'Consolas', monospace;
-    font-size: 15px;
     color: #4ade80;
+    font-size: 13px;
 }
+
+/* ── Upgrade cost ────────────────────────────── */
+.upgrade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 10px;
+    background: #0d1117;
+    border: 1px solid #1c2a3a;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.upgrade-item span:last-child {
+    font-family: 'Consolas', monospace;
+    color: #fbbf24;
+}
+
+/* ── Bouton upgrade ──────────────────────────── */
+.btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    background: #1a3a1a;
+    border: 1px solid #2ea043;
+    border-radius: 6px;
+    color: #4ade80;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.08s;
+}
+
+.btn:hover  { background: #22482a; }
+.btn:active { transform: scale(0.97); }
+
+/* ── offers ──────────────────────────── */
+
+#offers-panel {
+    padding-top: 10px;
+
+}
+
+.offer-item {
+    padding: 7px 10px;
+    background: #0d1117;
+    border: 1px solid #1c2a3a;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+.offer-item span:first-child{
+    display: block;
+    width: 100%;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #1c2a3a;
+}
+.offer-item span:nth-child(2), .offer-item span:nth-child(3) {
+    padding-top: 5px;
+    display: block;
+}
+
+/* ── Info row ────────────────────────────────── */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 5px 0;
+    color: #8b949e;
+}
+
+.info-row strong { color: #e6edf3; }
+
+/* ── Carte ───────────────────────────────────── */
+#map-area {
+    position: relative;
+    background: #010409;
+    overflow: hidden;
+}
+
+#map-area canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+}
+
+/* ── Tooltip ─────────────────────────────────── */
+.tooltip {
+    position: absolute;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-family: 'Consolas', monospace;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s;
+    white-space: nowrap;
+}
+
+.tooltip.visible { opacity: 1; }
+
+/* ── Scrollbar ───────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 2px; }
+
+.btn-blue {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    background: #1a2a3a;
+    border: 1px solid #2e6aa0;
+    border-radius: 6px;
+    color: #58a6ff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.08s;
+}
+
+.btn-blue:hover  { background: #1e3550; }
+.btn-blue:active { transform: scale(0.97); }
