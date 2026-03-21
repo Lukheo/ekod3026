@@ -198,6 +198,7 @@ function move(direction) {
       { headers: { "codinggame-id": token } }
     )
     .then((res) => {
+      console.log(res.data)
       const data = res.data;
       const pos  = data.position;
 
@@ -253,12 +254,9 @@ function getOffers() {
     offersPanel.innerHTML = ""    
 
     offers.forEach(o => {
-    console.log(
-      `📦 ${o.resourceType} | qty: ${o.quantityIn} | 💰 ${o.pricePerResource}/u | 👤 ${o.owner.name}`
-    );
     const div = document.createElement("div");
       div.className = "offer-item";
-      div.innerHTML = `<span>${o.resourceType}</span><span>📦${o.quantityIn}</span><span style="color:#fbbf24">💰 ${o.pricePerResource}/u</span><br><span>👤 ${o.owner.name}</span>`;
+      div.innerHTML = `<span>${o.resourceType}</span><span>📦${o.quantityIn}</span><span style="color:#fbbf24">💰 ${o.pricePerResource}/u</span><br><span>👤 ${o.owner.name}</span><br><span>${o.id}</span>`;
       offersPanel.appendChild(div);
     });
   })
@@ -266,6 +264,44 @@ function getOffers() {
 }
 
 seeOffersBtn.addEventListener("click", getOffers)
+
+function createOffer(resourceType, quantityIn, pricePerResource) {
+  axios.post(
+    `${baseUrl}/marketplace/offers`,
+    { resourceType, quantityIn, pricePerResource },
+    { headers: { "codinggame-id": token } }
+  )
+  .then(res => console.log("📦 Offre créée :", res.data))
+  .catch(err => console.error(err.response?.data || err.message));
+}
+document.getElementById("sell3kf").addEventListener("click", function() {
+  createOffer("FERONIUM", 1000, 5);
+});
+
+function deleteOffer(offerId) {
+  axios.delete(`${baseUrl}/marketplace/offers/${offerId}`, {
+    headers: { "codinggame-id": token }
+  })
+  .then(() => console.log("Offre supprimée"))
+  .catch(err => console.error(err.response?.data || err.message));
+}
+
+function buyOffer(offerId, quantity) {
+  axios.post(
+    `${baseUrl}/marketplace/purchases`,
+    {
+      offerId: offerId,
+      quantity: quantity
+    },
+    {
+      headers: { "codinggame-id": token }
+    }
+  )
+  .then(res => {
+    console.log("✅ Achat réussi :", res.data);
+  })
+  .catch(err => console.error(err.response?.data || err.message));
+}
 
 // ───────────── Clavier ────────────────────────────────────────
 document.addEventListener("keydown", (e) => {
