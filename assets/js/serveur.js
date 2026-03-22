@@ -135,6 +135,12 @@ http
 
     // ── Fichiers statiques ──────────────────────────────────────
     let filePath = url.pathname === "/" ? "/index.html" : url.pathname;
+
+    // Remappe les chemins assets/ vers la racine
+    filePath = filePath
+      .replace(/^\/assets\/css\//, "/")
+      .replace(/^\/assets\/js\//, "/");
+
     filePath = path.join(ROOT, filePath);
 
     if (!filePath.startsWith(ROOT)) {

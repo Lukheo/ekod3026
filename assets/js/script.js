@@ -135,11 +135,50 @@ const canvas = document.getElementById("map");
 const ctx = canvas.getContext("2d");
 const tooltip = document.getElementById("tooltip");
 
+// Offscreen canvas : fond + grille + cellules
+// Double buffer : on dessine sur _back, on swape sur _front quand c'est prêt
+const _front = document.createElement("canvas");
+const _fctx  = _front.getContext("2d");
+const _back  = document.createElement("canvas");
+const _octx  = _back.getContext("2d");
+
+let _staticDirty = true;
+let _lastView = { px: null, py: null, vx: null, vy: null, cs: null, cells: 0, islands: 0 };
+
+function markDirty() { _staticDirty = true; }
+
+function _viewChanged() {
+  const p = state.position;
+  return (
+    _lastView.px      !== p?.x                    ||
+    _lastView.py      !== p?.y                    ||
+    _lastView.vx      !== state.viewX             ||
+    _lastView.vy      !== state.viewY             ||
+    _lastView.cs      !== state.cellSize          ||
+    _lastView.cells   !== state.cellMemory.size   ||
+    _lastView.islands !== state.discoveredIslands.length
+  );
+}
+
+function _snapView() {
+  const p = state.position;
+  _lastView = {
+    px: p?.x, py: p?.y,
+    vx: state.viewX, vy: state.viewY,
+    cs: state.cellSize,
+    cells: state.cellMemory.size,
+    islands: state.discoveredIslands.length,
+  };
+}
+
 function resizeCanvas() {
   const area = document.getElementById("map-area");
-  canvas.width = area.clientWidth;
-  canvas.height = area.clientHeight;
-  // Ne pas relancer drawMap ici — la boucle rAF tourne déjà
+  const w = area.clientWidth;
+  const h = area.clientHeight;
+  canvas.width  = w;  canvas.height  = h;
+  _front.width  = w;  _front.height  = h;
+  _back.width   = w;  _back.height   = h;
+  markDirty();
 }
 
 function worldToScreen(wx, wy) {
@@ -176,163 +215,162 @@ const STATE_OVERLAYS = {
   KNOWN: "rgba(46, 160, 80, 0.35)",
 };
 
-function drawMap() {
-  if (!ctx) return;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+// Gradient de fond mis en cache — recréé seulement si la taille change
+let _bgGrad = null;
+let _bgGradW = 0, _bgGradH = 0;
 
-  // Ocean background
-  const grad = ctx.createRadialGradient(
-    canvas.width / 2,
-    canvas.height / 2,
-    0,
-    canvas.width / 2,
-    canvas.height / 2,
-    Math.max(canvas.width, canvas.height) / 1.2,
-  );
-  grad.addColorStop(0, "#0d2240");
-  grad.addColorStop(1, "#060d1a");
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+function _getBgGrad(W, H) {
+  if (_bgGrad && _bgGradW === W && _bgGradH === H) return _bgGrad;
+  _bgGrad = _octx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W, H) / 1.2);
+  _bgGrad.addColorStop(0, "#0d2240");
+  _bgGrad.addColorStop(1, "#060d1a");
+  _bgGradW = W; _bgGradH = H;
+  return _bgGrad;
+}
 
-  // Draw grid lines (subtle)
-  if (state.cellSize >= 20) {
-    ctx.strokeStyle = "rgba(26, 74, 122, 0.08)";
-    ctx.lineWidth = 0.5;
-    const cs = state.cellSize;
-    const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
-    const px = state.position?.x || 0;
-    const py = state.position?.y || 0;
-    const offX = (cx + state.viewX) % cs;
-    const offY = (cy + state.viewY) % cs;
-    for (let x = offX; x < canvas.width; x += cs) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, canvas.height);
-      ctx.stroke();
-    }
-    for (let y = offY; y < canvas.height; y += cs) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(canvas.width, y);
-      ctx.stroke();
-    }
-  }
+// ── Dessine fond + grille + cellules sur le back buffer ──────────────────────
+function drawStaticLayer() {
+  const W = _back.width;
+  const H = _back.height;
+  _octx.clearRect(0, 0, W, H);
+
+  // Fond (gradient caché)
+  _octx.fillStyle = _getBgGrad(W, H);
+  _octx.fillRect(0, 0, W, H);
 
   const cs = state.cellSize;
+
+  // Grille (un seul path groupé)
+  if (cs >= 20) {
+    _octx.strokeStyle = "rgba(26, 74, 122, 0.08)";
+    _octx.lineWidth = 0.5;
+    const offX = ((W/2 + state.viewX) % cs + cs) % cs;
+    const offY = ((H/2 + state.viewY) % cs + cs) % cs;
+    _octx.beginPath();
+    for (let x = offX; x < W; x += cs) { _octx.moveTo(x, 0); _octx.lineTo(x, H); }
+    for (let y = offY; y < H; y += cs) { _octx.moveTo(0, y); _octx.lineTo(W, y); }
+    _octx.stroke();
+  }
+
   const margin = cs * 2;
 
-  // Draw all remembered cells
-  // Index nom → islandState depuis les îles découvertes du joueur
   const islandClaimMap = new Map();
   state.discoveredIslands.forEach(di => {
     if (di.island?.name) islandClaimMap.set(di.island.name, di.islandState);
   });
 
-  state.cellMemory.forEach((cell, key) => {
-    const { sx, sy } = worldToScreen(cell.x, cell.y);
-    if (sx < -margin || sx > canvas.width + margin) return;
-    if (sy < -margin || sy > canvas.height + margin) return;
+  // ── Batching : on groupe les cellules par couleur de fill ──────────────────
+  // Buckets : { fillColor → [rects] }
+  const buckets = new Map();
+  // Overlays séparés (semi-transparents)
+  const overlayBuckets = new Map();
+  // Borders groupés par (color, width)
+  const borderBuckets = new Map();
 
-    // Pour les îles SAND : couleur selon état claim
+  const hw = cs / 2 - 0.5; // demi-largeur intérieure
+
+  state.cellMemory.forEach((cell) => {
+    const { sx, sy } = worldToScreen(cell.x, cell.y);
+    if (sx < -margin || sx > W + margin || sy < -margin || sy > H + margin) return;
+
+    const x0 = sx - cs/2 + 0.5;
+    const y0 = sy - cs/2 + 0.5;
+    const w  = cs - 1;
+
     let fillColor, borderColor, borderWidth;
     if (cell.type === "SAND") {
-      const islandName  = cell.island?.name;
-      const claimState  = islandName ? islandClaimMap.get(islandName) : null;
-      if (claimState === "KNOWN") {
-        fillColor   = "#2d6e1a";  // vert foncé = claimée
-        borderColor = "#5dbd30";
-        borderWidth = 1.5;
-      } else if (claimState === "DISCOVERED") {
-        fillColor   = "#7a6010";  // or foncé = vue non claimée
-        borderColor = "#f0b429";
-        borderWidth = 1.5;
-      } else {
-        fillColor   = "#7a5c1e";  // sable neutre = inconnue
-        borderColor = "#a07830";
-        borderWidth = 0.5;
-      }
+      const claimState = cell.island?.name ? islandClaimMap.get(cell.island.name) : null;
+      if      (claimState === "KNOWN")      { fillColor = "#2d6e1a"; borderColor = "#5dbd30"; borderWidth = 1.5; }
+      else if (claimState === "DISCOVERED") { fillColor = "#7a6010"; borderColor = "#f0b429"; borderWidth = 1.5; }
+      else                                  { fillColor = "#7a5c1e"; borderColor = "#a07830"; borderWidth = 0.5; }
     } else {
       const colors = CELL_COLORS[cell.type] || CELL_COLORS.SEA;
-      fillColor   = colors.base;
-      borderColor = colors.border;
-      borderWidth = 0.5;
+      fillColor = colors.base; borderColor = colors.border; borderWidth = 0.5;
     }
 
-    // Base cell
-    ctx.fillStyle = fillColor;
-    ctx.fillRect(sx - cs / 2 + 0.5, sy - cs / 2 + 0.5, cs - 1, cs - 1);
+    // Fill bucket
+    if (!buckets.has(fillColor)) buckets.set(fillColor, []);
+    buckets.get(fillColor).push(x0, y0, w, w);
 
-    // State overlay (mer uniquement)
+    // Overlay bucket (mer uniquement)
     if (cell.type !== "SAND" && cell.stateEnum && STATE_OVERLAYS[cell.stateEnum]) {
-      ctx.fillStyle = STATE_OVERLAYS[cell.stateEnum];
-      ctx.fillRect(sx - cs / 2 + 0.5, sy - cs / 2 + 0.5, cs - 1, cs - 1);
+      const oc = STATE_OVERLAYS[cell.stateEnum];
+      if (!overlayBuckets.has(oc)) overlayBuckets.set(oc, []);
+      overlayBuckets.get(oc).push(x0, y0, w, w);
     }
 
-    // Border
-    ctx.strokeStyle = borderColor;
-    ctx.lineWidth = borderWidth;
-    ctx.strokeRect(sx - cs / 2 + 0.5, sy - cs / 2 + 0.5, cs - 1, cs - 1);
-
-    // Type icon
-    if (cs >= 28) {
-      ctx.font = `${Math.floor(cs * 0.42)}px serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      let icon = "";
-      if (cell.type === "SAND") {
-        const islandName = cell.island?.name;
-        const claimState = islandName ? islandClaimMap.get(islandName) : null;
-        if      (claimState === "KNOWN")      icon = "✅";
-        else if (claimState === "DISCOVERED") icon = "👁️";
-        else                                  icon = "🏝";
-      } else if (cell.type === "ROCKS") {
-        icon = "🪨";
-      }
-      if (icon) ctx.fillText(icon, sx, sy);
-    }
-
-    // Other ships indicator
-    if (cell.ships && cell.ships.length > 0) {
-      ctx.font = `${Math.floor(cs * 0.32)}px serif`;
-      ctx.textAlign = "right";
-      ctx.textBaseline = "top";
-      ctx.fillText("⚓", sx + cs / 2 - 2, sy - cs / 2 + 2);
-    }
+    // Border bucket
+    const bk = `${borderColor}|${borderWidth}`;
+    if (!borderBuckets.has(bk)) borderBuckets.set(bk, { color: borderColor, width: borderWidth, rects: [] });
+    borderBuckets.get(bk).rects.push(x0, y0, w, w);
   });
 
-  // Draw fog of war for unknown cells (optional dense effect)
-  // Draw coordinates for current visible cells
-  if (cs >= 26) {
-    state.cellMemory.forEach((cell) => {
-      const { sx, sy } = worldToScreen(cell.x, cell.y);
-      if (sx < 0 || sx > canvas.width || sy < 0 || sy > canvas.height) return;
-      ctx.font = `${Math.max(8, Math.floor(cs * 0.22))}px monospace`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "top";
-      ctx.fillStyle = "rgba(140,180,220,0.35)";
-      ctx.fillText(`${cell.x},${cell.y}`, sx, sy - cs / 2 + 2);
-    });
+  // ── Flush fills ────────────────────────────────────────────────────────────
+  buckets.forEach((rects, color) => {
+    _octx.fillStyle = color;
+    for (let i = 0; i < rects.length; i += 4)
+      _octx.fillRect(rects[i], rects[i+1], rects[i+2], rects[i+3]);
+  });
+
+  // ── Flush overlays ─────────────────────────────────────────────────────────
+  overlayBuckets.forEach((rects, color) => {
+    _octx.fillStyle = color;
+    for (let i = 0; i < rects.length; i += 4)
+      _octx.fillRect(rects[i], rects[i+1], rects[i+2], rects[i+3]);
+  });
+
+  // ── Flush borders (path groupé par couleur+width) ──────────────────────────
+  borderBuckets.forEach(({ color, width, rects }) => {
+    _octx.strokeStyle = color;
+    _octx.lineWidth = width;
+    _octx.beginPath();
+    for (let i = 0; i < rects.length; i += 4) {
+      const x = rects[i], y = rects[i+1], w = rects[i+2];
+      _octx.rect(x, y, w, w);
+    }
+    _octx.stroke();
+  });
+
+  // Swap atomique : copie le back entièrement fini sur le front
+  _fctx.clearRect(0, 0, _front.width, _front.height);
+  _fctx.drawImage(_back, 0, 0);
+}
+
+// ── Boucle rAF : stamp offscreen + bateau animé ───────────────────────────────
+let _glowGrad = null;
+let _glowSx = null, _glowSy = null, _glowCs = null;
+
+function drawMap() {
+  // Layer statique : redessiné seulement si quelque chose a changé
+  if (_staticDirty || _viewChanged()) {
+    drawStaticLayer();
+    _snapView();
+    _staticDirty = false;
   }
 
-  // Draw ship at current position
+  // Stamp du front buffer sur le canvas visible
+  ctx.drawImage(_front, 0, 0);
+
+  // Bateau animé (pulse)
+  const cs = state.cellSize;
   if (state.position) {
     const { sx, sy } = worldToScreen(state.position.x, state.position.y);
 
-    // Glow
-    const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, cs * 0.8);
-    glow.addColorStop(0, "rgba(255, 215, 0, 0.4)");
-    glow.addColorStop(1, "rgba(255, 215, 0, 0)");
-    ctx.fillStyle = glow;
+    // Glow : recréé seulement si la position ou le zoom change
+    if (_glowSx !== sx || _glowSy !== sy || _glowCs !== cs) {
+      _glowGrad = ctx.createRadialGradient(sx, sy, 0, sx, sy, cs * 0.8);
+      _glowGrad.addColorStop(0, "rgba(255, 215, 0, 0.4)");
+      _glowGrad.addColorStop(1, "rgba(255, 215, 0, 0)");
+      _glowSx = sx; _glowSy = sy; _glowCs = cs;
+    }
+    ctx.fillStyle = _glowGrad;
     ctx.fillRect(sx - cs, sy - cs, cs * 2, cs * 2);
 
-    // Ship emoji
     ctx.font = `${Math.floor(cs * 0.65)}px serif`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText("⛵", sx, sy);
 
-    // Pulse ring
     const t = Date.now() / 600;
     const pulse = (Math.sin(t) + 1) / 2;
     ctx.strokeStyle = `rgba(255, 215, 0, ${0.2 + pulse * 0.3})`;
@@ -342,7 +380,7 @@ function drawMap() {
     ctx.stroke();
   }
 
-  // Coordinates of center
+  // Coordonnées en haut à gauche
   if (state.position && cs >= 20) {
     ctx.font = "11px 'Courier New', monospace";
     ctx.textAlign = "left";
@@ -366,6 +404,7 @@ function startRenderLoop() {
 // UPDATE CELLS IN MEMORY
 // ─────────────────────────────────────────────────────────────────────────────
 function mergeCells(cells, stateEnum = null) {
+  let anyChanged = false;
   cells.forEach(cell => {
     const key = `${cell.x},${cell.y}`;
     const existing = state.cellMemory.get(key) || {};
@@ -375,8 +414,9 @@ function mergeCells(cells, stateEnum = null) {
       || existing.ships?.length !== cell.ships?.length;
     const merged = { ...existing, ...cell, stateEnum: newState };
     state.cellMemory.set(key, merged);
-    if (changed) _pendingCells.set(key, merged);
+    if (changed) { _pendingCells.set(key, merged); anyChanged = true; }
   });
+  if (anyChanged) markDirty();
   if (_pendingCells.size > 0) saveMapMemory();
 }
 
@@ -398,31 +438,36 @@ const KEY_TO_DIR = {
 
 // File d'attente des mouvements pendant qu'un appel est en cours
 let _moveQueue = null;
-let _cooldownStart = null;
-let _cooldownDuration = 0;
+let _cooldownUntil = 0; // timestamp de fin de cooldown
 
-function showCooldown(ms) {
-  _cooldownStart = Date.now();
-  _cooldownDuration = ms;
+// ── Timer visuel dans la topbar ──────────────────────────────────────────────
+let _timerRaf = null;
+function _startCooldownTimer(ms) {
+  _cooldownUntil = Date.now() + ms;
   const el = document.getElementById("movesLeft");
   if (!el) return;
+
   const tick = () => {
-    const elapsed = Date.now() - _cooldownStart;
-    const remaining = Math.max(0, _cooldownDuration - elapsed);
+    const remaining = _cooldownUntil - Date.now();
     if (remaining > 0) {
       el.textContent = `⏳ ${(remaining / 1000).toFixed(1)}s`;
-      requestAnimationFrame(tick);
+      _timerRaf = requestAnimationFrame(tick);
     } else {
+      _timerRaf = null;
       el.textContent = state.movesLeft ?? "?";
     }
   };
-  requestAnimationFrame(tick);
+  if (_timerRaf) cancelAnimationFrame(_timerRaf);
+  _timerRaf = requestAnimationFrame(tick);
 }
 
 async function moveShip(direction) {
   if (state.movesLeft !== "?" && state.movesLeft !== undefined && state.movesLeft <= 0) return;
 
-  // Si un mouvement est déjà en cours, on mémorise le dernier demandé
+  // Bloqué si le cooldown n'est pas écoulé
+  if (Date.now() < _cooldownUntil) return;
+
+  // Si un appel API est déjà en cours, on mémorise le dernier demandé
   if (state.moving) {
     _moveQueue = direction;
     return;
@@ -446,19 +491,17 @@ async function moveShip(direction) {
 
     updateHUD();
 
-    // Afficher un cooldown visuel si l'appel a été rapide (évite le spam)
+    // Démarre le timer bloquant si l'API a répondu trop vite
     const MIN_INTERVAL = 300;
     const wait = Math.max(0, MIN_INTERVAL - elapsed);
-    if (wait > 0) {
-      showCooldown(wait);
-      await new Promise(r => setTimeout(r, wait));
-    }
+    if (wait > 0) _startCooldownTimer(wait);
+
   } catch (e) {
     notify(`❌ ${e.message}`, "error");
   } finally {
     state.moving = false;
-    // Exécuter le mouvement en attente s'il y en a un
-    if (_moveQueue) {
+    // Exécuter le mouvement en attente seulement si le cooldown est passé
+    if (_moveQueue && Date.now() >= _cooldownUntil) {
       const next = _moveQueue;
       _moveQueue = null;
       moveShip(next);
@@ -469,6 +512,161 @@ async function moveShip(direction) {
 function centerView() {
   state.viewX = 0;
   state.viewY = 0;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// BOT EXPLORATEUR  — rayon 50 autour de (0, 0)
+// ─────────────────────────────────────────────────────────────────────────────
+const BOT_RADIUS  = 50;
+const BOT_ORIGIN  = { x: 0, y: 0 };
+
+const DIR_VECS = {
+  N:  { x:  0, y: -1 }, S:  { x:  0, y:  1 },
+  E:  { x:  1, y:  0 }, W:  { x: -1, y:  0 },
+  NE: { x:  1, y: -1 }, NW: { x: -1, y: -1 },
+  SE: { x:  1, y:  1 }, SW: { x: -1, y:  1 },
+};
+
+let _botRunning = false;
+let _botStop    = false;
+
+// Attend que le cooldown ET le flag moving soient libres
+function _botWait() {
+  return new Promise(resolve => {
+    const check = () => {
+      if (!state.moving && Date.now() >= _cooldownUntil) resolve();
+      else setTimeout(check, 50);
+    };
+    check();
+  });
+}
+
+// BFS : chemin de `from` vers `to`, évite les rochers connus
+function _bfs(from, to) {
+  const key = (x, y) => `${x},${y}`;
+  const queue = [{ x: from.x, y: from.y, path: [] }];
+  const seen  = new Set([key(from.x, from.y)]);
+  while (queue.length) {
+    const cur = queue.shift();
+    for (const [dir, v] of Object.entries(DIR_VECS)) {
+      const nx = cur.x + v.x, ny = cur.y + v.y;
+      const nk = key(nx, ny);
+      if (seen.has(nk)) continue;
+      seen.add(nk);
+      const path = [...cur.path, dir];
+      if (nx === to.x && ny === to.y) return path;
+      const cell = state.cellMemory.get(nk);
+      if (cell?.type === "ROCKS") continue;
+      if (path.length < 120) queue.push({ x: nx, y: ny, path });
+    }
+  }
+  return null;
+}
+
+// Cherche la cellule inexplorée la plus proche de la position courante,
+// dans le rayon autour de BOT_ORIGIN
+function _nearestUnexplored() {
+  const pos = state.position;
+  if (!pos) return null;
+  let best = null, bestDist = Infinity;
+  for (let dy = -BOT_RADIUS; dy <= BOT_RADIUS; dy++) {
+    for (let dx = -BOT_RADIUS; dx <= BOT_RADIUS; dx++) {
+      // Rayon circulaire autour de (0,0)
+      if (dx * dx + dy * dy > BOT_RADIUS * BOT_RADIUS) continue;
+      const x = BOT_ORIGIN.x + dx;
+      const y = BOT_ORIGIN.y + dy;
+      if (state.cellMemory.has(`${x},${y}`)) continue;
+      // Distance Manhattan depuis la position actuelle du bateau
+      const dist = Math.abs(x - pos.x) + Math.abs(y - pos.y);
+      if (dist < bestDist) { bestDist = dist; best = { x, y }; }
+    }
+  }
+  return best;
+}
+
+// Effectue UN déplacement via l'API (bypass moveShip pour ne pas interférer)
+async function _botMove(direction) {
+  const t0 = Date.now();
+  const data = await api("POST", "/ship/move", { direction });
+  const elapsed = Date.now() - t0;
+  state.position = data.position;
+  state.movesLeft = data.energy;
+  if (data.discoveredCells?.length) mergeCells(data.discoveredCells, "SEEN");
+  if (data.position) mergeCells([{ ...data.position, stateEnum: "SEEN" }], "SEEN");
+  updateHUD();
+  // Respecte le cooldown minimum
+  const wait = Math.max(0, 350 - elapsed);
+  if (wait > 0) {
+    _startCooldownTimer(wait);
+    await new Promise(r => setTimeout(r, wait));
+  }
+}
+
+async function startBot() {
+  if (_botRunning) return;
+  _botRunning = true;
+  _botStop    = false;
+  notify("🤖 Bot démarré — exploration rayon 50 autour de (0,0)", "info");
+  updateBotBtn();
+
+  try {
+    while (!_botStop) {
+      if (state.movesLeft !== "?" && state.movesLeft <= 0) {
+        notify("⚡ Plus de mouvements — bot en pause", "info");
+        break;
+      }
+
+      const target = _nearestUnexplored();
+      if (!target) {
+        notify("✅ Zone entièrement explorée !", "success");
+        break;
+      }
+
+      const path = _bfs(state.position, target);
+      if (!path) {
+        // Cible inaccessible : on la marque comme connue pour éviter la boucle
+        state.cellMemory.set(`${target.x},${target.y}`, { x: target.x, y: target.y, type: "SEA", stateEnum: "SEEN" });
+        continue;
+      }
+
+      for (const dir of path) {
+        if (_botStop) break;
+        await _botWait();
+        try {
+          await _botMove(dir);
+        } catch (e) {
+          notify(`❌ Bot : ${e.message}`, "error");
+          _botStop = true;
+          break;
+        }
+      }
+    }
+  } finally {
+    _botRunning = false;
+    _botStop    = false;
+    updateBotBtn();
+    if (!_botStop) notify("🤖 Bot arrêté", "info");
+  }
+}
+
+function stopBot() {
+  _botStop = true;
+  notify("⏹ Arrêt du bot demandé…", "info");
+  updateBotBtn();
+}
+
+function updateBotBtn() {
+  const btn = document.getElementById("botBtn");
+  if (!btn) return;
+  if (_botRunning) {
+    btn.textContent = "⏹ Stopper le bot";
+    btn.style.borderColor = "rgba(192,57,43,0.6)";
+    btn.onclick = stopBot;
+  } else {
+    btn.textContent = "🤖 Lancer le bot";
+    btn.style.borderColor = "rgba(74,144,184,0.4)";
+    btn.onclick = startBot;
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -587,13 +785,29 @@ function renderShipUpgrade() {
 
 function renderIslands() {
   const section = document.getElementById("islands-section");
-  if (!section || !state.discoveredIslands.length) return; // rien à afficher → on laisse
+  if (!section || !state.discoveredIslands.length) return;
   section.innerHTML = "";
+
+  const BASE = 10;
+  const qMult = 1 + (state.quotient || 0) / 100;
+
   state.discoveredIslands.forEach((di) => {
+    const bonus = di.island?.bonusQuotient || 0;
+    const prod = di.islandState === "KNOWN"
+      ? Math.round(BASE * qMult * (1 + bonus / 100))
+      : null;
+
     const d = document.createElement("div");
     d.className = "island-item";
-    d.innerHTML = `<span>🏝 ${di.island?.name || "?"}</span>
-      <span class="island-state ${di.islandState}">${di.islandState}</span>`;
+    d.innerHTML = `
+      <span>🏝 ${di.island?.name || "?"}</span>
+      <span style="display:flex;align-items:center;gap:6px">
+        ${prod !== null
+          ? `<span style="font-size:0.72rem;color:#5dade2">+${prod}/min</span>`
+          : `<span style="font-size:0.72rem;color:var(--text-muted)">${bonus > 0 ? `+${bonus}%` : "—"}</span>`
+        }
+        <span class="island-state ${di.islandState}">${di.islandState}</span>
+      </span>`;
     section.appendChild(d);
   });
 }
@@ -767,6 +981,27 @@ async function sell1000Feronium() {
   }
 }
 
+async function cancelMyOffers() {
+  try {
+    const allOffers = await api("GET", "/marketplace/offers");
+    const mine = allOffers.filter(o => o.owner?.name === state.homeName || o.ownerId === state.playerId);
+    if (!mine.length) {
+      notify("Aucune offre en cours à supprimer", "info");
+      return;
+    }
+    const results = await Promise.allSettled(
+      mine.map(o => api("DELETE", `/marketplace/offers/${o.id}`))
+    );
+    const ok  = results.filter(r => r.status === "fulfilled").length;
+    const err = results.filter(r => r.status === "rejected").length;
+    if (ok)  notify(`✅ ${ok} offre(s) supprimée(s)`, "success");
+    if (err) notify(`❌ ${err} suppression(s) échouée(s)`, "error");
+    loadOffers();
+  } catch (e) {
+    notify(`❌ ${e.message}`, "error");
+  }
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // TOOLTIP
 // ─────────────────────────────────────────────────────────────────────────────
@@ -829,8 +1064,10 @@ canvas.addEventListener(
   "wheel",
   (e) => {
     e.preventDefault();
-    const delta = e.deltaY > 0 ? -4 : 4;
-    state.cellSize = Math.max(16, Math.min(72, state.cellSize + delta));
+    // Zoom plus rapide quand on est déjà très dézoomé
+    const delta = e.deltaY > 0 ? -Math.max(1, Math.floor(state.cellSize / 8)) : Math.max(1, Math.floor(state.cellSize / 8));
+    state.cellSize = Math.max(4, Math.min(72, state.cellSize + delta));
+    markDirty();
   },
   { passive: false },
 );
@@ -977,6 +1214,79 @@ function renderTaxes(taxes) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// PIRATERIE
+// ─────────────────────────────────────────────────────────────────────────────
+async function launchTheft() {
+  const resourceType = document.getElementById("theft-resource")?.value;
+  const moneySpent   = parseInt(document.getElementById("theft-budget")?.value) || 0;
+  if (!resourceType || moneySpent <= 0) return;
+  if (state.gold < moneySpent) {
+    notify(`❌ Pas assez d'or (${fmt(state.gold)} 💰)`, "error");
+    return;
+  }
+  try {
+    const theft = await api("POST", "/thefts/player", { resourceType, moneySpent });
+    const resolveIn = theft.resolveAt
+      ? Math.round((new Date(theft.resolveAt) - Date.now()) / 60000)
+      : "?";
+    notify(`🏴‍☠️ Vol lancé ! Chance: ${theft.chance} — résolu dans ~${resolveIn} min`, "success");
+    await loadPlayerDetails();
+    updateHUD();
+    loadThefts();
+  } catch (e) {
+    notify(`❌ ${e.message}`, "error");
+  }
+}
+
+async function loadThefts() {
+  try {
+    const thefts = await api("GET", "/thefts");
+    renderThefts(thefts);
+  } catch (e) {
+    notify(`❌ Vols : ${e.message}`, "error");
+  }
+}
+
+function renderThefts(thefts) {
+  const list = document.getElementById("theft-list");
+  if (!list) return;
+  if (!thefts?.length) {
+    list.innerHTML = `<p style="color:var(--text-muted);font-size:0.78rem;text-align:center;padding:6px">Aucun vol enregistré</p>`;
+    return;
+  }
+  const STATUS_STYLE = {
+    PENDING:  { label: "⏳ En cours", color: "#f1c40f" },
+    SUCCESS:  { label: "✅ Réussi",   color: "#2ecc71" },
+    FAILED:   { label: "❌ Échoué",   color: "#e74c3c" },
+    CANCELLED:{ label: "🚫 Annulé",   color: "#95a5a6" },
+  };
+  const CHANCE_COLOR = { FORTE: "#2ecc71", MOYENNE: "#f1c40f", FAIBLE: "#e74c3c" };
+  list.innerHTML = "";
+  [...thefts].reverse().slice(0, 15).forEach(t => {
+    const st = STATUS_STYLE[t.status] || { label: t.status, color: "#8a9bb0" };
+    const date = t.createdAt
+      ? new Date(t.createdAt).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })
+      : "—";
+    const resolveIn = t.status === "PENDING" && t.resolveAt
+      ? Math.max(0, Math.round((new Date(t.resolveAt) - Date.now()) / 60000))
+      : null;
+    const d = document.createElement("div");
+    d.style.cssText = "background:rgba(255,255,255,0.03);border:1px solid rgba(74,144,184,0.12);border-radius:6px;padding:7px 9px;font-size:0.78rem";
+    d.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-family:'Cinzel',serif;color:var(--sea-foam)">${t.resourceType}</span>
+        <span style="color:${st.color}">${st.label}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:3px;color:var(--text-muted)">
+        <span>💰 ${fmt(t.moneySpent)} · <span style="color:${CHANCE_COLOR[t.chance] || "#8a9bb0"}">${t.chance || "—"}</span></span>
+        <span>${resolveIn !== null ? `⏱ ${resolveIn} min` : date}</span>
+      </div>
+      ${t.amountAttempted ? `<div style="color:var(--sand-light);margin-top:2px">⚔️ ${fmt(t.amountAttempted)} tentés</div>` : ""}`;
+    list.appendChild(d);
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // DOM READY
 // ─────────────────────────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
@@ -1030,21 +1340,90 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", sell1000Feronium);
   document.getElementById("refreshTaxes").addEventListener("click", loadTaxes);
 
-  // Bouton reset carte (panneau droit)
-  const mapResetBtn = document.createElement("button");
-  mapResetBtn.className = "btn";
-  mapResetBtn.textContent = "🗑️ Réinitialiser la carte";
-  mapResetBtn.style.marginTop = "8px";
-  mapResetBtn.style.borderColor = "rgba(192,57,43,0.4)";
-  mapResetBtn.addEventListener("click", async () => {
-    if (confirm("Effacer toute la mémoire de carte sauvegardée ?")) {
-      await clearMapMemory();
-    }
+  // ── Section Piraterie (panneau droit) ───────────────────────────────────────
+  const rightPanel = document.getElementById("panel-right");
+  const theftSection = document.createElement("section");
+  theftSection.className = "panel-card";
+  theftSection.innerHTML = `
+    <div class="panel-title">🏴‍☠️ Piraterie</div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="font-size:0.8rem;color:var(--text-muted)">Ressource cible</div>
+      <select id="theft-resource" style="background:rgba(255,255,255,0.06);border:1px solid var(--panel-border);
+        color:var(--text-light);border-radius:6px;padding:5px 8px;font-size:0.82rem;width:100%">
+        <option value="FERONIUM">⚙️ Feronium</option>
+        <option value="BOISIUM">🌲 Boisium</option>
+        <option value="CHARBONIUM">⚫ Charbonium</option>
+      </select>
+      <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px">Budget 💰</div>
+      <div style="display:flex;gap:6px;align-items:center">
+        <input id="theft-budget" type="number" min="100" step="100" value="500"
+          style="flex:1;background:rgba(255,255,255,0.06);border:1px solid var(--panel-border);
+          color:var(--text-light);border-radius:6px;padding:5px 8px;font-size:0.82rem"/>
+        <span id="theft-chance" style="font-size:0.78rem;font-family:'Cinzel',serif;min-width:50px;text-align:right">—</span>
+      </div>
+      <div style="display:flex;gap:4px;margin-top:2px">
+        <button class="btn" data-budget="300"  style="font-size:0.65rem;padding:4px">300</button>
+        <button class="btn" data-budget="1000" style="font-size:0.65rem;padding:4px">1k</button>
+        <button class="btn" data-budget="3000" style="font-size:0.65rem;padding:4px">3k</button>
+        <button class="btn" data-budget="5000" style="font-size:0.65rem;padding:4px">5k</button>
+      </div>
+      <button class="btn" id="theft-launch" style="margin-top:4px;border-color:rgba(192,57,43,0.5)">
+        🏴‍☠️ Lancer le vol
+      </button>
+      <button class="btn" id="theft-refresh" style="font-size:0.68rem;opacity:0.7">
+        🔄 Historique des vols
+      </button>
+    </div>
+    <div id="theft-list" style="display:flex;flex-direction:column;gap:4px;margin-top:6px;max-height:200px;overflow-y:auto"></div>`;
+  rightPanel.appendChild(theftSection);
+
+  // Mise à jour de l'indicateur de chance en temps réel
+  const budgetInput = document.getElementById("theft-budget");
+  const chanceEl    = document.getElementById("theft-chance");
+  function updateChanceLabel() {
+    const b = parseInt(budgetInput.value) || 0;
+    let label, color;
+    if      (b >= 3000) { label = "FORTE";   color = "#2ecc71"; }
+    else if (b >= 1000) { label = "MOYENNE"; color = "#f1c40f"; }
+    else                { label = "FAIBLE";  color = "#e74c3c"; }
+    chanceEl.textContent = label;
+    chanceEl.style.color = color;
+  }
+  budgetInput.addEventListener("input", updateChanceLabel);
+  updateChanceLabel();
+
+  // Boutons raccourcis budget
+  theftSection.querySelectorAll("[data-budget]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      budgetInput.value = btn.dataset.budget;
+      updateChanceLabel();
+    });
   });
+
+  document.getElementById("theft-launch").addEventListener("click", launchTheft);
+  document.getElementById("theft-refresh").addEventListener("click", loadThefts);
+
+  // Bouton bot explorateur (panneau gauche)
+  const botSection = document.createElement("section");
+  botSection.className = "panel-card";
+  botSection.innerHTML = `
+    <div class="panel-title">🤖 Bot Explorateur</div>
+    <p style="font-size:0.78rem;color:var(--text-muted)">Rayon 50 autour de (0, 0)</p>
+    <button class="btn" id="botBtn">🤖 Lancer le bot</button>`;
+  document.getElementById("panel-left").appendChild(botSection);
+  updateBotBtn();
+
+  // Bouton supprimer mes offres (panneau droit)
+  const cancelOffersBtn = document.createElement("button");
+  cancelOffersBtn.className = "btn";
+  cancelOffersBtn.textContent = "🗑️ Supprimer mes offres";
+  cancelOffersBtn.style.marginTop = "8px";
+  cancelOffersBtn.style.borderColor = "rgba(192,57,43,0.4)";
+  cancelOffersBtn.addEventListener("click", cancelMyOffers);
   document
     .getElementById("panel-right")
     .querySelector(".panel-card")
-    .appendChild(mapResetBtn);
+    .appendChild(cancelOffersBtn);
 
   // Canvas resize
   window.addEventListener("resize", resizeCanvas);

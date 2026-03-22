@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BatoKod – 3026</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛵</text></svg>" />
+
+    <!-- Préconnexion Google Fonts pour éliminer la latence DNS/TCP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Chargement non-bloquant des polices via media trick -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <!-- Fallback si JS désactivé -->
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" />
+    </noscript>
+
     <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Script différé : le navigateur le télécharge en parallèle, l'exécute après le DOM -->
+    <script src="assets/js/script.js" defer></script>
   </head>
   <body>
     <!-- Barre supérieure -->
@@ -76,7 +96,5 @@
         </section>
       </aside>
     </div>
-
-    <script src="assets/js/script.js"></script>
   </body>
 </html>
