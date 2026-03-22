@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BatoKod</title>
-    <link rel="icon" href="assets/images/bateau_fav.ico" />
+    <title>BatoKod – 3026</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛵</text></svg>"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <!-- ── Barre du haut ── -->
+    <!-- Barre supérieure -->
     <header id="topbar">
       <div id="topbar-left">
-        <span id="game-title">3026 le jeu tip top</span>
+        <span id="game-title">3026 – Le Jeu Tip Top</span>
         <span class="sep">|</span>
         <span>🏠 <span id="homeName">—</span></span>
       </div>
@@ -25,48 +28,46 @@
       </div>
     </header>
 
-    <!-- ── Corps principal ── -->
+    <!-- Corps principal -->
     <div id="main">
-      <!-- Panneau gauche -->
+      <!-- Panneau gauche – Upgrades -->
       <aside id="panel-left">
         <section class="panel-card">
-          <div class="panel-title">⬆️ Upgrade entrepôt</div>
-          <p id="storageName"></p>
+          <div class="panel-title">⬆️ Upgrade Entrepôt</div>
+          <p id="storageName">—</p>
           <div id="upgrade-cost"></div>
           <button class="btn" id="UPG_storage">⬆️ Upgrader</button>
         </section>
 
         <section class="panel-card">
-          <div class="panel-title">⬆️ Upgrade bateau</div>
-          <p id="boatName"></p>
+          <div class="panel-title">⬆️ Upgrade Bateau</div>
+          <p id="boatName">—</p>
           <div id="upgrade-ship-cost"></div>
           <button class="btn-blue" id="UPG_ship">⬆️ Upgrader</button>
         </section>
       </aside>
 
-      <!-- Carte centrale -->
+      <!-- Zone centrale – Carte -->
       <div id="map-area">
         <canvas id="map"></canvas>
         <div id="tooltip" class="tooltip"></div>
       </div>
 
-      <!-- Panneau droit -->
+      <!-- Panneau droit – Marketplace -->
       <aside id="panel-right">
         <section class="panel-card">
           <div class="panel-title">Marketplace</div>
           <div class="upgrade-item">
-            <span>💰Gold</span><span id="currentGold">-</span>
+            <span>💰 Gold</span>
+            <span id="currentGold">—</span>
           </div>
           <button class="btn" id="seeOffers">Actualiser les offres</button>
           <div id="offers-panel"></div>
-          <button class="btn" id="sell3kf">
-            Vendre 1000 feronium pour 15u
-          </button>
+          <button class="btn" id="sell3kf">Vendre 1000 Feronium à 15u</button>
         </section>
       </aside>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,4214 @@
+{
+  "cells": [
+    {
+      "id": "9a57138d-5646-40af-8002-2e42ae262a27",
+      "x": -3,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d792d0ee-d43f-4d49-ba86-4710d1762c07",
+      "x": -2,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1b33e5fa-2264-401f-a337-6671536b83e8",
+      "x": -1,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "59fc2bb9-61ca-4faf-84b6-e6bdad7886bf",
+      "x": -4,
+      "y": -21,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "530f7209-fccf-44fe-8a8c-934ca7136652",
+      "x": -3,
+      "y": -21,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "eae1d6f5-abcf-4f58-b454-fb702bf59953",
+      "x": -2,
+      "y": -21,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "81a867fc-032b-4d65-adf1-5b96f149b71f",
+      "x": 0,
+      "y": -21,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "1495818e-0120-4a01-96fb-df3316d75c73",
+        "name": "Stakesa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "cbc508a8-3121-4f46-9bc0-81e940e8563f",
+      "x": -1,
+      "y": -21,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "1495818e-0120-4a01-96fb-df3316d75c73",
+        "name": "Stakesa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "173012b3-6c79-4b63-b107-29c6f56971d6",
+      "x": -1,
+      "y": -20,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "1495818e-0120-4a01-96fb-df3316d75c73",
+        "name": "Stakesa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c35c83ab-249a-4c03-aa48-c09f15481db0",
+      "x": -2,
+      "y": -20,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6624b0fa-01be-4ee0-b186-8ace1cec5625",
+      "x": -2,
+      "y": -19,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a372f4a0-f455-4d1e-a9b1-22252c68952d",
+      "x": -2,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "dd2e2bfb-0130-4735-97b6-3e9e80b46af5",
+      "x": -3,
+      "y": -20,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d0a1a477-667c-4139-b6be-3fcb0879610c",
+      "x": -2,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "13c365ba-2329-4ca6-b70f-5554791929e4",
+      "x": -3,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a7cdfba1-ad56-4a67-818c-545fef909cb8",
+      "x": 0,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f8e13103-9a17-4c95-b41c-54ae9bc527a2",
+      "x": -1,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f3db21c8-f3b1-4d10-b75d-a7c74eca0bbf",
+      "x": -4,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "977b49aa-451f-4ffd-8534-84850fcaceb9",
+      "x": -2,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e5568e40-7d35-4c64-9987-b2256b2e1084",
+      "x": -3,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "30bae91f-4a42-40a3-ab49-d5fd7dc64f29",
+      "x": -1,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b1518f8b-5e34-45eb-a8cc-c7bd2bf1386c",
+      "x": 0,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c45149f9-f7a6-48fe-887d-3724e8274868",
+      "x": -4,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2f31ca7c-6d44-4e19-b268-e8935362f784",
+      "x": -3,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "40b304cb-ab3e-4071-b440-6e7637f9c61e",
+      "x": -4,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b42b290a-ee7e-43f5-adc0-8bed9f317d16",
+      "x": 0,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "bd3ab163-758b-4172-93da-fe7fc09738ed",
+      "x": -2,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "09235d4b-c146-4e89-a9cf-22c41d6798d2",
+      "x": -1,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "58b31ae6-a552-4b88-b24f-9ea2c5b7041b",
+      "x": -2,
+      "y": -27,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "578cb11c-f98a-40b7-a5a9-57b5e29322f5",
+      "x": -4,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e3d9095e-c64e-4d85-8c37-019d10e5a1ca",
+      "x": -3,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "34392a39-5d2a-40cd-a72b-9a46b8728343",
+      "x": -1,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a771ff72-189b-4e59-84ab-4ddc7a8eb405",
+      "x": 0,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "fa12d5e8-7056-449b-8953-df04a471608a",
+      "x": -1,
+      "y": -27,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "627ac544-83df-4141-8ab2-d92ed800a297",
+        "name": "Iostaalapa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6d11fc63-7e7f-4395-81c6-f29217db9661",
+      "x": -3,
+      "y": -27,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "dfa51b64-431b-4d2a-80f8-0346456f5fba",
+      "x": -2,
+      "y": -28,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9686c3f3-c00d-44ea-83cd-a4c980ec3084",
+      "x": -4,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f76a8951-1ea2-48b8-a704-348d47129324",
+      "x": 0,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ea3b3ba2-fc1d-4b3c-8e7e-6775a375b719",
+      "x": 0,
+      "y": -27,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "627ac544-83df-4141-8ab2-d92ed800a297",
+        "name": "Iostaalapa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "76fb3daf-340c-4adc-b7d0-e34f132b50da",
+      "x": -4,
+      "y": -27,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "1166eedf-c673-4bd6-b5db-8ddc0d5572e9",
+        "name": "Qinubas",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "8a376133-cf8f-4e33-b710-4fb0c0d59c49",
+      "x": -2,
+      "y": -29,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6f634492-669c-4ba2-97f6-97ac2518a941",
+      "x": -3,
+      "y": -28,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "12688755-0975-486d-b436-9815046050f6",
+      "x": -1,
+      "y": -28,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "627ac544-83df-4141-8ab2-d92ed800a297",
+        "name": "Iostaalapa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9220264a-cf17-4b3e-8255-adca795f3a7a",
+      "x": -2,
+      "y": -30,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "fcfa1336-e4bd-49f6-ae1f-a0f0f72dac21",
+      "x": -4,
+      "y": -28,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ebb27176-9519-460c-96fa-2235352e5718",
+      "x": -3,
+      "y": -29,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0bb9da18-5cf6-4938-a8f6-f534522edbf3",
+      "x": 0,
+      "y": -28,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "627ac544-83df-4141-8ab2-d92ed800a297",
+        "name": "Iostaalapa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "43565d72-0ee3-4059-b365-a322e395a57e",
+      "x": -1,
+      "y": -29,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "627ac544-83df-4141-8ab2-d92ed800a297",
+        "name": "Iostaalapa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "31ed3917-e8a3-4bc4-9f2f-c7465008fb84",
+      "x": -1,
+      "y": -30,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6f9cb3d4-4792-4206-a708-4f2fb733253c",
+      "x": -3,
+      "y": -30,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "64f83f0f-c19f-48e4-b75e-145c64427a64",
+      "x": -4,
+      "y": -29,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b092fd24-e712-44fc-ad16-f5e87dcc8b3d",
+      "x": 0,
+      "y": -29,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "627ac544-83df-4141-8ab2-d92ed800a297",
+        "name": "Iostaalapa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2d46f262-a65c-4ed3-835f-3cd2bfe45a69",
+      "x": -2,
+      "y": -31,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "538a5ced-22e5-4f4a-baac-a82f2d030a25",
+      "x": -1,
+      "y": -31,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e85eed83-ce05-4d2d-9cab-3ecffe0753dc",
+      "x": 0,
+      "y": -30,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1fffb313-7a88-4f0d-9bc9-b72446f16451",
+      "x": -4,
+      "y": -30,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f04908ed-eac1-42b0-91ec-a59459650229",
+      "x": -3,
+      "y": -31,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "5642b156-9785-4f7d-8ba8-d1b6e5066f3b",
+      "x": -2,
+      "y": -32,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "975398dc-549a-4699-aec6-3bfdb08d73b5",
+      "x": -2,
+      "y": -33,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c51cd940-d417-45be-808c-031571cfa50c",
+      "x": -1,
+      "y": -32,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "83a79a5d-1f02-47b8-a972-40a8ff7872a9",
+      "x": 0,
+      "y": -31,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "bcf57a2f-2634-4940-b256-fcf13523c9d3",
+      "x": -3,
+      "y": -32,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c026bc94-a9d1-4e25-868d-e356448d7983",
+      "x": -4,
+      "y": -31,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "9829566d-5e03-4856-b619-dd24e46ddf42",
+        "name": "Dinabo",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0e63c4e9-db92-4243-b57c-f871e1cf0e0e",
+      "x": -1,
+      "y": -33,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e65d0fbe-6cd9-458d-a8bb-49ef24785547",
+      "x": 0,
+      "y": -32,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9e5e069f-cfa7-4313-a5bd-3a58f5d6f0fe",
+      "x": 1,
+      "y": -31,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b4fc05cb-d4e2-4ac8-aac9-572736756032",
+      "x": 1,
+      "y": -30,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e28afc4c-d42a-4bae-a40a-fd6218708771",
+      "x": 1,
+      "y": -29,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "627ac544-83df-4141-8ab2-d92ed800a297",
+        "name": "Iostaalapa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "91dffd06-9793-43bf-a932-aa39a7646a60",
+      "x": 1,
+      "y": -28,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "627ac544-83df-4141-8ab2-d92ed800a297",
+        "name": "Iostaalapa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "5a1d70fa-2da7-49dd-8214-69a7e0576d15",
+      "x": 1,
+      "y": -27,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "627ac544-83df-4141-8ab2-d92ed800a297",
+        "name": "Iostaalapa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "01eed4c6-1494-43ad-87bd-8d5577ca2e7f",
+      "x": 1,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1e41df74-3313-4740-b66e-8613f8328c30",
+      "x": 1,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "410ab36e-9d87-453b-a729-188337d697de",
+      "x": 1,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "628de8dc-b4c4-4c1c-87c4-7fff258bb8f4",
+      "x": 1,
+      "y": -23,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "f1e99bdd-ea05-4104-b166-532bbeb9e1e4",
+        "name": "Moze",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0ee73560-ba4f-43b6-9a85-b3b4af45f946",
+      "x": 1,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0f11f584-18f7-4135-8a05-494eaf0c51e9",
+      "x": 0,
+      "y": -20,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "1495818e-0120-4a01-96fb-df3316d75c73",
+        "name": "Stakesa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "59d4f220-8c4e-487e-ba0f-5ecfa699df38",
+      "x": 2,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c244ff46-e55c-4ff7-ada9-8374a2f3d0be",
+      "x": 1,
+      "y": -21,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "1495818e-0120-4a01-96fb-df3316d75c73",
+        "name": "Stakesa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "24853fda-a103-48c8-856f-3b251bdb657b",
+      "x": 1,
+      "y": -20,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "1495818e-0120-4a01-96fb-df3316d75c73",
+        "name": "Stakesa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9549182b-8ab4-47b6-acab-e70d3072dfaf",
+      "x": 2,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7091959f-ad19-4149-89b0-d271f1395301",
+      "x": 3,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "98b87994-e643-4104-968f-333b4da213c1",
+      "x": 2,
+      "y": -21,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "dbe2cb71-7584-4116-8c43-59ff0f7fdbb1",
+      "x": 2,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "22a9d36b-c27c-4aa9-bf70-ca600b6ceaac",
+      "x": 2,
+      "y": -20,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9eb5d9cc-459a-4396-abe6-e71238326be7",
+      "x": 3,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6bdf29de-7473-4eeb-9e2a-690725a5753a",
+      "x": 4,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1c4f0a12-709a-464f-9f0a-a97e6c8751b5",
+      "x": 3,
+      "y": -21,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3f8cb69d-9dad-4c15-9ec1-22bdea759c6f",
+      "x": 3,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d7ce3af5-1d7a-47a2-a4cf-1ac5715fc442",
+      "x": 3,
+      "y": -20,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "cafbe6f3-f365-4cb2-b62f-cbe84c54ec55",
+      "x": 4,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2a795c2c-fe64-4be1-ad2f-fe8bf7e43883",
+      "x": 5,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "426463e8-c13b-4c32-bbad-b4889983d8c5",
+      "x": 4,
+      "y": -21,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f4681b60-fe22-489a-8121-1608f26475a9",
+      "x": 4,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ec5bda80-7f6e-4baa-bcdb-35c7bf97c560",
+      "x": 5,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0612d7da-8f6c-4c9b-899d-1743290e4d5f",
+      "x": 6,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "16ae06c5-4599-4183-a9e2-a56a7ed48ee1",
+      "x": 5,
+      "y": -21,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6d714678-b2bd-4050-897e-ad63bcb083ed",
+      "x": 4,
+      "y": -20,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "eb58be1a-c2ad-4b68-87d4-19d2dc767a09",
+      "x": 5,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d8406a60-8758-4953-bcc4-16f0cf32ce9d",
+      "x": 4,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "893aebad-cd94-49c5-aeec-ae385fd0d8f2",
+      "x": 6,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1c6068ec-e071-437f-89a4-279c28c681c7",
+      "x": 6,
+      "y": -24,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "8c56a6da-3e36-450c-8430-ea00694b134b",
+        "name": "Yazexo",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0edeb04d-01b0-4de0-ac6e-32d61590a5e0",
+      "x": 3,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6cdaa56d-5e2b-424d-868b-9eed52470933",
+      "x": 5,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "af8590cf-ac36-4018-b111-3ac5941ee670",
+      "x": 4,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "8b4faf81-24c1-4cb0-b6fc-354b78bdf031",
+      "x": 4,
+      "y": -27,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c72cbe79-ca4d-47ca-8c2f-90d6670cb572",
+      "x": 6,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "4c2b1c75-7977-4132-a80f-a559d89b67d2",
+      "x": 2,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "33fddba3-37bc-42de-8d06-8cde400b4415",
+      "x": 3,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "5205ac75-0e16-4aee-b647-ccb2cca23275",
+      "x": 5,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f1013cc0-b360-4145-9f94-9b70f3cf4a66",
+      "x": 3,
+      "y": -27,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3ac91135-cd6d-4987-b561-c6b7c139434d",
+      "x": 5,
+      "y": -27,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "18bf830b-13a4-4cfe-8449-8259714b6fe9",
+      "x": 4,
+      "y": -28,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "8901b87b-a155-4be1-a12f-f4138ff2c113",
+      "x": 2,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "00d7ad17-e8d0-4d16-acae-45d5b6e3e82d",
+      "x": 6,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2d45f452-73f2-453f-90cd-8b0daf9f227c",
+      "x": 2,
+      "y": -27,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "079c0153-869a-4472-85c0-2ee02ce89b54",
+      "x": 3,
+      "y": -28,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c975b172-539b-42a9-914a-9684d5bfc9e9",
+      "x": 2,
+      "y": -28,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "41a581db-1f7d-432f-9d55-30a14ddcf9e4",
+      "x": -5,
+      "y": -27,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "dcef9988-6bbc-460e-8b53-b668d8de73f3",
+      "x": -5,
+      "y": -28,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "fbe84888-76ab-4f33-a688-de812dcf83eb",
+      "x": -6,
+      "y": -27,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "71a0680b-bdb8-4d84-a477-c2fd923ac233",
+      "x": -5,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ba4ffa59-57f3-4178-9db6-258c87f2e7ca",
+      "x": -6,
+      "y": -28,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ec63d3e3-9c5d-4ce1-ba62-89f63f2ac896",
+      "x": -5,
+      "y": -29,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "de70fe9e-c44a-4a7c-bdd8-b850de9b3773",
+      "x": -5,
+      "y": -30,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a45323f8-8e2a-4d59-9872-cc6abfbd2266",
+      "x": -6,
+      "y": -29,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9c2f46fc-fa63-40ef-b4db-a3cf940db7a8",
+      "x": -6,
+      "y": -30,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "4e930f82-1cd5-4317-9905-76c01e108ffd",
+      "x": -4,
+      "y": -32,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0cf8dc79-6f6f-47c4-898d-9e0f83f27dbc",
+      "x": -5,
+      "y": -31,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "788421e6-ac47-4e9f-aee5-8696a1b3f7c7",
+      "x": -4,
+      "y": -33,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2be32ab4-8a4d-441d-9610-5599b7146665",
+      "x": -5,
+      "y": -32,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "12e5331e-3cb2-4d3a-93b5-1157653a35d4",
+      "x": -6,
+      "y": -31,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "641ee0d4-e7d4-432c-a504-28cd5b9fcf44",
+      "x": -6,
+      "y": -26,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "4a3fd66c-6714-46a5-b06a-cd7312d968bf",
+      "x": -5,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3fb19bc6-b385-46a1-afe0-6c8c4d367db0",
+      "x": -6,
+      "y": -25,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3fa5bf6f-d601-431f-b086-3bb26a76b309",
+      "x": -5,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d1cf76e2-1bf4-47bf-b9e7-f72834ce273a",
+      "x": -6,
+      "y": -24,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b927a617-518b-4486-96bd-b69bb526410b",
+      "x": -5,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "118b23e0-464b-432d-b1d9-c297613497e7",
+      "x": -5,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "5809d1f8-3db1-4d38-b6d1-b9da50112033",
+      "x": -6,
+      "y": -23,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "17826cfb-14c3-4c0d-bd6a-1363b5751fa1",
+      "x": -5,
+      "y": -21,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d29e3e05-533e-4b17-b6a3-efc23715a068",
+      "x": -4,
+      "y": -20,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "294ca813-5259-4667-bb22-bc07b67c81ed",
+      "x": -6,
+      "y": -22,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0ed810a7-0a99-487a-9a24-4b845ab9de5f",
+      "x": -6,
+      "y": -21,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2bfdd46a-7e46-4f4a-9763-f2f3e17207a7",
+      "x": -4,
+      "y": -19,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "51f3afbb-9963-4718-86ae-3dac45038f7e",
+      "x": -5,
+      "y": -20,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3ce9689f-709d-4e2a-a1ef-31a3a2f5aa09",
+      "x": 0,
+      "y": -9,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "cf2053db-a6c1-4e87-994f-e26e14ac2b2a",
+      "x": -1,
+      "y": -8,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "77b620d1-b16b-4239-be71-b3c66399a1c6",
+      "x": 0,
+      "y": -8,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e50951bb-5750-4b1e-b1e3-9f5a438eceac",
+      "x": 1,
+      "y": -8,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b879f548-236e-47ab-9397-991041baffc4",
+      "x": -2,
+      "y": -7,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7f36ce75-ff57-4319-ab93-63b8d4b33120",
+      "x": 0,
+      "y": -7,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a150d3dd-ce4b-4148-9d58-dcf71a24800b",
+      "x": 2,
+      "y": -7,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "74c15edf-cf7e-484d-82d8-098657ce311b",
+      "x": -1,
+      "y": -6,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0a8a4c99-49a3-4f57-a9d1-1a27c854160b",
+      "x": 0,
+      "y": -6,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c4fc6e60-ebf9-43c5-872b-cb74d3c37d64",
+      "x": 1,
+      "y": -6,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "afce6f35-fea9-4f47-b1cd-5d053029ca19",
+      "x": 0,
+      "y": -5,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9233c1e2-e93c-4269-8f31-29b2aa1c7b02",
+      "x": 1,
+      "y": -7,
+      "type": "SAND",
+      "zone": 1,
+      "ships": [],
+      "island": {
+        "id": "1047048b-f7b8-491c-ae56-bd9e9a403919",
+        "name": "Saboady",
+        "bonusQuotient": 0
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d06602b6-2690-4dc0-a221-46e9c984f75e",
+      "x": -1,
+      "y": -7,
+      "type": "SAND",
+      "zone": 1,
+      "ships": [],
+      "island": {
+        "id": "bbdc8a6b-a417-405f-9772-18cee9459f76",
+        "name": "Dressrosa",
+        "bonusQuotient": 0
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "87a07954-7302-4c3e-a2a1-94ff079e8b08",
+      "x": 1,
+      "y": -9,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "341d3837-508a-4081-8bb2-a06cfea0887e",
+      "x": 2,
+      "y": -8,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9a63c5a6-4000-4b26-9cea-e90e45e1578b",
+      "x": 3,
+      "y": -7,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "29169157-7341-4f50-a7f7-be1fd7cea438",
+      "x": 2,
+      "y": -6,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "aad60cc9-64b9-492b-84c2-880f998f1cad",
+      "x": 1,
+      "y": -5,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f1f9de38-a4eb-4e50-8365-167bc107ff32",
+      "x": 1,
+      "y": -10,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9cc2665c-2834-4bce-b613-2aac95a18a41",
+      "x": 2,
+      "y": -9,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "86c6a77a-3137-4c77-b576-8395503c6a3c",
+      "x": 3,
+      "y": -8,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "32f7f689-d418-463c-827e-a6532f87035c",
+      "x": 0,
+      "y": -10,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "904f87ec-10bb-4e2b-9365-02a681f6cbcd",
+      "x": 2,
+      "y": -10,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b323373a-cd2e-4539-b645-ac1c0a8424d1",
+      "x": -1,
+      "y": -9,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7f49d603-1161-4f14-882e-aee25b847ae5",
+      "x": 3,
+      "y": -9,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f792bc7f-6682-42e8-98b2-b48631075c04",
+      "x": 1,
+      "y": -11,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "13d61f48-ef25-4805-81cf-5bccdd2fd2e6",
+        "name": "Kena",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0a1f4fb0-6e4f-49cd-9208-0afd902547fb",
+      "x": 1,
+      "y": -12,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "13d61f48-ef25-4805-81cf-5bccdd2fd2e6",
+        "name": "Kena",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b5e52dbc-9983-4221-bac0-83dd4adc607e",
+      "x": 2,
+      "y": -11,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1619fe37-fafe-4b82-a613-215dab1f62ac",
+      "x": 3,
+      "y": -10,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d1842244-4533-4179-814f-d39d616b433b",
+      "x": -1,
+      "y": -10,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2369bef9-880e-4513-a293-811249051365",
+      "x": 0,
+      "y": -11,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "13d61f48-ef25-4805-81cf-5bccdd2fd2e6",
+        "name": "Kena",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "5287cdaf-2d6b-4d4f-9022-55e6a307adcb",
+      "x": 1,
+      "y": -13,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "13d61f48-ef25-4805-81cf-5bccdd2fd2e6",
+        "name": "Kena",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d27581b0-27c2-4fa4-98ad-b54026f1afb6",
+      "x": 2,
+      "y": -12,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e3469ec5-5c4d-4d5c-8696-78fc92e0215e",
+      "x": 0,
+      "y": -12,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "13d61f48-ef25-4805-81cf-5bccdd2fd2e6",
+        "name": "Kena",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0d255cbe-29f8-48ea-bc03-9c17a17acf2d",
+      "x": -1,
+      "y": -11,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "13d61f48-ef25-4805-81cf-5bccdd2fd2e6",
+        "name": "Kena",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "daa2d3f5-3fcb-48fb-b65a-882213e76d23",
+      "x": 3,
+      "y": -11,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "668f85a9-c394-4d05-960d-e52626787a63",
+      "x": 0,
+      "y": -13,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "13d61f48-ef25-4805-81cf-5bccdd2fd2e6",
+        "name": "Kena",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "af6c799b-ed3a-4dac-aa9c-6d00ac30d7df",
+      "x": 2,
+      "y": -13,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3f0b7e2e-8c7e-403d-ac8d-5457630ea71d",
+      "x": 3,
+      "y": -12,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b13ede04-2555-4d00-a2d8-9ca07704db52",
+      "x": -1,
+      "y": -12,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "13d61f48-ef25-4805-81cf-5bccdd2fd2e6",
+        "name": "Kena",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e8b31741-e869-4961-a6a2-524e85a44401",
+      "x": 1,
+      "y": -14,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ab2fbd08-188a-494d-87aa-898df9cac3e1",
+      "x": 1,
+      "y": -15,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b92ba7ce-720c-4c0f-bb18-c637b67791c1",
+      "x": 3,
+      "y": -13,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a2f14387-a601-4dcd-93bc-25ba21c4cdbd",
+      "x": -1,
+      "y": -13,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "13d61f48-ef25-4805-81cf-5bccdd2fd2e6",
+        "name": "Kena",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1b6b84fe-4dbf-40a2-b696-d65b80d9ffca",
+      "x": 0,
+      "y": -14,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c5ed068b-fb98-4902-9e7c-e75f69f46a2d",
+      "x": 2,
+      "y": -14,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "24c5e5a8-ed7c-48a3-92a8-f1d1ca51d989",
+      "x": 1,
+      "y": -16,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ff4ec750-6610-4230-bbed-667e35d3ed3d",
+      "x": 0,
+      "y": -15,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7c6cb8ee-9ff8-4088-8630-eef7916648c9",
+      "x": 2,
+      "y": -15,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e500e1a5-8a89-4135-a3be-ed90d6c9a025",
+      "x": 3,
+      "y": -14,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b274d77d-5cca-4fc8-8086-dfd042db0720",
+      "x": -1,
+      "y": -14,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "45c7e3e4-3935-4132-a1bc-1c1d36b4de5b",
+      "x": 0,
+      "y": -16,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "4d70d306-9dfd-4060-ad40-b4a1e27d3553",
+      "x": 2,
+      "y": -16,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "92143bff-1da0-4f1b-b1fe-609d78a02c5f",
+      "x": -1,
+      "y": -15,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ab848827-2159-4185-a1e8-d669513c6c6c",
+      "x": 3,
+      "y": -15,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "91b13098-ad87-4b89-b2f4-6a9d30946fdf",
+      "x": 1,
+      "y": -17,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9846f23d-9e90-4b27-aab3-3d1d9a2e1c0c",
+      "x": -1,
+      "y": -16,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "61e47d2c-8331-4e46-bcc0-3030c8d25562",
+      "x": 3,
+      "y": -16,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "58d15e8c-b1cd-4244-b44b-cfb8a7b55cd0",
+      "x": 0,
+      "y": -17,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d6c05fa5-7d5d-447d-9293-fedbc7da536e",
+      "x": 2,
+      "y": -17,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c03950a3-3d3a-4770-961d-3a50d7eb9976",
+      "x": 1,
+      "y": -18,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "555f2e77-6cad-4ecd-9264-73ac74636f21",
+      "x": -3,
+      "y": -19,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "284d84d2-02aa-4ccc-b419-e5251008ff89",
+      "x": -3,
+      "y": -18,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "23f8d454-d23a-4a25-8ed0-258484bc0ade",
+      "x": -2,
+      "y": -18,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1c518b32-10a7-421b-9cf1-3370141feca3",
+      "x": -4,
+      "y": -17,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "8e553cfa-8bde-405b-b3e6-86e05c947f8f",
+      "x": -3,
+      "y": -17,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "e90f4936-8fd1-45fe-ad3d-b63df0d2fc56",
+        "name": "Qipa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1e25aaef-89a5-43c4-8c82-821847a86ee0",
+      "x": -4,
+      "y": -16,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b7dfae29-9081-43f4-b586-8e4a3f256915",
+      "x": -5,
+      "y": -17,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "62ce4e25-f894-4bc5-8bd6-50f3dffcbd59",
+      "x": -5,
+      "y": -19,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9eaa81cd-6e01-41a9-bf5f-e0dc6042053b",
+      "x": -6,
+      "y": -18,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "82179d74-eef0-4b89-95bd-77831318fd14",
+      "x": -5,
+      "y": -18,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ff6b0538-4559-49d2-8e91-5f78c42eddbf",
+      "x": -4,
+      "y": -18,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c0bcbe51-8c45-48a8-bf63-bc4148252956",
+      "x": -1,
+      "y": -18,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d3eb1ed2-2580-4a1c-a5cb-189e8f5f70d5",
+      "x": -3,
+      "y": -16,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "db47f918-9482-49ab-86e8-153ad4580a9b",
+      "x": -2,
+      "y": -17,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "27f58fcb-ef64-47ee-a72e-0a93b16b9faa",
+      "x": -1,
+      "y": -19,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "1495818e-0120-4a01-96fb-df3316d75c73",
+        "name": "Stakesa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3a9a3a67-c9b7-4e49-a689-7c53a57e7e1b",
+      "x": 0,
+      "y": -19,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "1495818e-0120-4a01-96fb-df3316d75c73",
+        "name": "Stakesa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "693bb8a2-5c63-480a-a92e-23e2db3c88b0",
+      "x": -1,
+      "y": -17,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d4e9ffc3-35bf-450e-aa10-43123c415d23",
+      "x": 0,
+      "y": -18,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7c94f6b3-7a83-4f67-a291-3c911dd1300d",
+      "x": -2,
+      "y": -16,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f4c9660c-a8f9-4b4f-8bf5-71bf4fbddfb8",
+      "x": -2,
+      "y": -15,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "cc494f94-bfe8-4a31-8888-66f6838cabe4",
+      "x": -3,
+      "y": -15,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "63d53892-d8e3-43da-a48c-3d2b0a2698df",
+      "x": -2,
+      "y": -14,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a7768c94-4a76-4bb8-946a-59b19b14de80",
+      "x": -2,
+      "y": -13,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b40a7338-95b6-44b6-a5ca-6e2db3039593",
+      "x": -4,
+      "y": -15,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "54c120b8-bd5e-479a-a034-381db93bf009",
+      "x": -3,
+      "y": -14,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "002c1f4b-3576-452d-9fb5-c97a19d26c58",
+      "x": -5,
+      "y": -15,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "71ff7d3f-481a-4d99-bec2-2b7c4474a340",
+      "x": -4,
+      "y": -14,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ba4475bd-9c40-452a-82b9-8431449c575d",
+      "x": -3,
+      "y": -13,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2e3b2e17-9450-46da-8f40-3e7ebdc5f9e4",
+      "x": 4,
+      "y": -14,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f7aabbcc-222c-45b5-8088-fa9ca99060da",
+      "x": 4,
+      "y": -13,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6242a324-85b2-442b-a4cb-28494a14b93f",
+      "x": 4,
+      "y": -12,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "031c0af9-5b45-43a5-8761-4e5f8f547b0e",
+      "x": 4,
+      "y": -11,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "95fcce87-4fb9-496a-b7a9-00e940869595",
+      "x": 4,
+      "y": -10,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "de38bd4b-4b09-40fb-a835-c0ab07ce59f9",
+      "x": 4,
+      "y": -9,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "56b63274-9bc3-4770-8041-7bc8bf93008c",
+      "x": 4,
+      "y": -8,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "347205f1-0440-450f-958b-72d035aebf5a",
+      "x": 4,
+      "y": -7,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0eb64c79-6ba7-4565-af0e-4b69cc439f45",
+      "x": 3,
+      "y": -6,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "673e06bc-1973-4b44-aa5a-cf8112f64832",
+      "x": 2,
+      "y": -5,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "4233f887-bf99-4b7b-960c-91860e6f5cb3",
+      "x": 4,
+      "y": -6,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "452b24c5-4c98-486d-97c0-68f36b5eacc7",
+      "x": 2,
+      "y": -4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "adfd57f2-89c5-4628-8912-fb2aab55b2e0",
+      "x": 3,
+      "y": -5,
+      "type": "SAND",
+      "zone": 1,
+      "ships": [],
+      "island": {
+        "id": "7be4e376-0d6d-4573-b99d-ef1f7d5eb1e4",
+        "name": "Enies Lobby",
+        "bonusQuotient": 0
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7897e335-264e-4e4e-bbea-b6bae51de1b7",
+      "x": 4,
+      "y": -5,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c6064ff8-494a-4b58-9524-d204153b9a0e",
+      "x": 1,
+      "y": -4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "018f035d-cd25-47f9-af01-745d1b11a23d",
+      "x": 3,
+      "y": -4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "353d1b19-1236-4fde-b3ec-1014ef1ac003",
+      "x": 2,
+      "y": -3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f627c0e4-878d-4dc6-aa39-25be19f967e4",
+      "x": 5,
+      "y": -5,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0555ad49-26eb-4f72-8e69-a2ae4c2ff045",
+      "x": 4,
+      "y": -4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "28fbd4dd-6fb3-4e17-ab10-a52c00fcf427",
+      "x": 3,
+      "y": -3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7bfa9a72-cdbd-4ef3-9feb-5d5b11ad1f37",
+      "x": 5,
+      "y": -4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d50890ed-d088-4da4-a049-3a921f9e5065",
+      "x": 4,
+      "y": -3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "69671e6a-c132-4976-9ab9-c88ff474599b",
+      "x": 3,
+      "y": -2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "856fa0f5-a7d6-46e1-b5bd-11c655276026",
+      "x": 1,
+      "y": -3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "39487173-b794-44fd-b054-22ac12fa2975",
+      "x": 2,
+      "y": -2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0c0dc141-1e4f-48b2-be0b-f27ccee3f2f0",
+      "x": 4,
+      "y": -2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "8201f7e4-0f4c-4a6d-bf83-c83249b2c248",
+      "x": 3,
+      "y": -1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9899acd5-9a2a-4e06-8957-b6ac6903faca",
+      "x": 5,
+      "y": -3,
+      "type": "SAND",
+      "zone": 1,
+      "ships": [],
+      "island": {
+        "id": "5e57e228-682d-4aa8-8425-2a60e6c0c481",
+        "name": "Water 7",
+        "bonusQuotient": 0
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "407ef3c9-09d0-4c25-bd2e-c27d2c7d2ec4",
+      "x": 6,
+      "y": -3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "141efa93-33de-40ec-9762-d8a1fd18400d",
+      "x": 5,
+      "y": -2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "048519b1-3469-4630-9214-7dd98b7301e1",
+      "x": 4,
+      "y": -1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d2fa9ec5-96fd-47b8-8474-dc3793c940b3",
+      "x": 6,
+      "y": -4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "951b9910-46ab-4682-bfdf-25c00911d36f",
+      "x": 7,
+      "y": -3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "bbb26dbe-ffec-442e-80b3-c4367f340d39",
+      "x": 6,
+      "y": -2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c87e743b-ae0e-47cc-a7fe-7b122df421e4",
+      "x": 5,
+      "y": -1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f4b7034b-9f4c-414d-888e-b9a4ad7043dd",
+      "x": 6,
+      "y": -5,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "88288bb0-c1be-497c-b984-250b1988f3e2",
+      "x": 7,
+      "y": -4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "08bc374e-53cf-47b7-afb5-496a12e3ed1c",
+      "x": 8,
+      "y": -3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e4344844-3d4b-44a6-bd8b-8da37c53bdee",
+      "x": 7,
+      "y": -2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "989d2081-dde4-4fda-b407-489f457fee3f",
+      "x": 6,
+      "y": -1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "70287914-1215-4306-9f6f-0d182f50b8f5",
+      "x": 7,
+      "y": -5,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "73ea227d-4a1b-40ac-bb74-19669a8c621b",
+      "x": 8,
+      "y": -4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a77cd02e-d1ba-40da-b0a3-e7938b089d5d",
+      "x": 9,
+      "y": -3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7c7061f1-838b-49cc-8fa6-af110aae08a8",
+      "x": 8,
+      "y": -2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9ecf905e-10e8-42e9-b864-1c5330f04566",
+      "x": 7,
+      "y": -1,
+      "type": "SAND",
+      "zone": 1,
+      "ships": [],
+      "island": {
+        "id": "547260d4-ea83-43b5-bc8e-cad505332cb5",
+        "name": "Skypiea",
+        "bonusQuotient": 0
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "cd4b01cd-8b47-4c23-a861-f12ec42eb763",
+      "x": 8,
+      "y": -5,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "4eaf9491-887e-4645-b4f8-c183b07e2f63",
+      "x": 9,
+      "y": -4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "debad357-363e-4b5f-8c6e-b75415284e2d",
+      "x": 10,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d942a4e9-9c25-465b-8529-d2df494f1211",
+      "x": 9,
+      "y": -2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f3e62458-d3e9-4ac6-8db8-0234494c90d5",
+      "x": 8,
+      "y": -1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7b69ff1a-50cf-4747-bc5d-0d32d60ba1d6",
+      "x": 10,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "164fead7-c0c7-4392-a5ba-3b901ee22b19",
+      "x": 9,
+      "y": -1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ad9abd71-0fb6-4f09-966c-641bbcebc951",
+      "x": 8,
+      "y": 0,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "512bce21-c299-4ee1-b613-221835e9ae25",
+      "x": 10,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "28830964-ba1d-4a0d-9645-db4208cfd460",
+      "x": 7,
+      "y": 0,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "062584e3-097a-4c7b-bffd-07f1218defbc",
+      "x": 9,
+      "y": 0,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ac370664-b594-4b8e-8efe-fd82f7fd0130",
+      "x": 8,
+      "y": 1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f6469e83-f607-4aba-a65a-c2e77185df19",
+      "x": 11,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "203851b0-1800-4d1a-b55f-b2c16c10809f",
+      "x": 10,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ab86744a-3d80-476d-8b19-928292dd2db6",
+      "x": 9,
+      "y": 1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "96bd7a52-e69f-49b0-84b7-be4fb4be1c56",
+      "x": 11,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "74cc4a85-2298-40b0-a3bb-108b744fce61",
+      "x": 10,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e4689ba4-b904-43c8-8982-8ddba88b9a9c",
+      "x": 11,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "8301ebb0-6393-42c1-bccc-60d044417a1c",
+      "x": 12,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "987b09ca-c4f1-4f6b-b012-95c960d7b26b",
+      "x": 12,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c88b46b3-fa94-4d53-a67f-b44061162a38",
+      "x": 11,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1bacce0a-965d-4dcf-af68-17769faf0757",
+      "x": 10,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3e83abed-35c6-478a-8407-bb2c54261344",
+      "x": 12,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f62655b7-db38-4975-a171-99c3cdcd788e",
+      "x": 11,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "061846dd-646a-4360-becb-c31d3a13b284",
+      "x": 10,
+      "y": 2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c8fde49c-635a-4df9-aa05-157b9f479e94",
+      "x": 12,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "aa363272-9dbf-4f63-89dd-c2a59bd34044",
+      "x": 9,
+      "y": 2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f66ea023-9430-4627-8b60-ab643276a717",
+      "x": 11,
+      "y": 2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c289d384-1486-4ad5-9a0c-b871f203072b",
+      "x": 10,
+      "y": 3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "29788372-3cba-4846-ae6f-efd68570d601",
+      "x": 7,
+      "y": 1,
+      "type": "SAND",
+      "zone": 1,
+      "ships": [
+        {
+          "lastMoveAt": "2026-03-21T18:03:51.718537",
+          "level": {
+            "id": 1,
+            "name": "barque"
+          },
+          "playerName": "NightCoders"
+        }
+      ],
+      "island": {
+        "id": "4938722a-bfdc-4e20-bcdc-b919d34a01fd",
+        "name": "Alabasta",
+        "bonusQuotient": 0
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "517239f7-1091-4b75-a6fb-48ada633a826",
+      "x": 8,
+      "y": 2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f9f98ed2-47c9-4f70-9655-3dc95bb76d59",
+      "x": 9,
+      "y": 3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "5e760dcd-62ca-4de2-ac43-92f3316ddefd",
+      "x": 13,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a027314e-e326-41c3-9480-d1b041515535",
+      "x": 12,
+      "y": 2,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "eff60f4a-f93a-4c00-8115-1031cfb4639f",
+        "name": "Naguta",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ee6c9bf1-12ad-4f59-a618-c354223519aa",
+      "x": 11,
+      "y": 3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7ad7c555-1e17-4559-89b6-96879eb75f73",
+      "x": 13,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7a9d0ac2-1cd0-4b4d-b762-3cf0a9a6e794",
+      "x": 14,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "773cb9e1-e39a-4b60-9d05-9600d6eafe5a",
+      "x": 13,
+      "y": 2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7ff88aaf-25cf-464c-b008-ff3cb1373c83",
+      "x": 12,
+      "y": 3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7823f180-1468-4aab-8e59-a3932f3a0e68",
+      "x": 14,
+      "y": 2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a5573930-c78a-4499-b132-c46ddafe53d1",
+      "x": 13,
+      "y": 3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0c107bf2-aea6-40a3-a672-613d8c888227",
+      "x": 12,
+      "y": 4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6ac3a8b5-323f-4d27-b8a1-263cd3bdda75",
+      "x": 11,
+      "y": 4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e3155dfd-3d5d-4c66-9589-44d86ea926d1",
+      "x": 10,
+      "y": 4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f35dab09-09ab-4eab-9d32-d7f7075cf55d",
+      "x": 7,
+      "y": 2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "72248b55-2d0a-42a2-8899-c801bccb0b2a",
+      "x": 8,
+      "y": 3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "59f9334f-f06c-4be4-b132-a5919317c641",
+      "x": 9,
+      "y": 4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "8faded0a-1995-456d-b6f9-ec625ea21218",
+      "x": 6,
+      "y": 2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3e8b5d6b-4269-46ff-b831-c1b4fef33301",
+      "x": 7,
+      "y": 3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "55031aa4-59bc-40a6-9207-4a995bdf78d4",
+      "x": 8,
+      "y": 4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3ad3928f-f417-4930-8fb2-c0b21e3020b7",
+      "x": 6,
+      "y": 1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "421aa470-36a7-40a6-a726-ee4f1f889034",
+      "x": 5,
+      "y": 2,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "402d1be1-1113-449a-b36d-af18abeef9f1",
+      "x": 6,
+      "y": 3,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "87076a6a-dc69-40c8-9a61-9b8f65ea5d71",
+      "x": 7,
+      "y": 4,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f0ff1f41-fa42-4414-97cb-4be8f5a5ec8f",
+      "x": 6,
+      "y": 0,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "81f7a102-5e95-4286-a253-54aece2578ce",
+      "x": 5,
+      "y": 1,
+      "type": "SEA",
+      "zone": 1,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a2d39493-552b-46da-aab8-3b0a2808fd19",
+      "x": 13,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "328fd38e-86c2-47c0-b18e-899d3d266cf9",
+      "x": 14,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9dffb85c-5056-4feb-ab68-5b1836ecc8f3",
+      "x": 15,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d231c570-17ff-4b86-a167-28193386377c",
+      "x": 14,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ae79a25d-98c6-485b-ba6f-7be770699275",
+      "x": 15,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6ce43f45-0e5d-4eb5-b20c-caf506f5173c",
+      "x": 16,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f947ec32-0c80-4449-b8aa-187654639232",
+      "x": 15,
+      "y": 2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "77e4184f-5828-48e2-a931-05799567f196",
+      "x": 14,
+      "y": 3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3cc4a761-e1f6-4d95-9c3e-f49642103157",
+      "x": 15,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "291a65ef-93f9-4724-bc2d-5305117ddf08",
+      "x": 16,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "62c87f6b-5eee-4cb6-9e68-b3afc19579fd",
+      "x": 17,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3de0b37b-dfee-4e23-9b44-f9b45aaa6e56",
+      "x": 16,
+      "y": 2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "bf45798b-77be-4f61-a66c-6d062404a84d",
+      "x": 15,
+      "y": 3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "4adad1d4-be40-4fd7-b6f8-7b2bfcbf41f9",
+      "x": 16,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "8e803a0a-0df5-4881-b440-4e38ef202c33",
+      "x": 17,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c73e0b92-0a00-40d0-b8b6-7eccf32073cc",
+      "x": 18,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "846d350a-98c0-40b9-be9f-4ddd402b3803",
+      "x": 17,
+      "y": 2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3679f7eb-3c2f-4a7e-8ca7-1aa64aac814c",
+      "x": 16,
+      "y": 3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "31159a40-623f-4d2d-8a06-d7904d1842fe",
+      "x": 17,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b3d5ec0b-9eb9-4c7e-95ef-755557ee853c",
+      "x": 18,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "978ec1ee-5780-482d-951d-865a9468c44a",
+      "x": 19,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "50a54071-7b2e-4f96-ba1a-71d6d1e10bad",
+      "x": 18,
+      "y": 2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ce0dab70-480f-4539-a824-d620e84ee665",
+      "x": 17,
+      "y": 3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "861b8114-03b5-4a38-960c-49057d22209d",
+      "x": 18,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "77a6e0de-0e81-4020-91f2-03bcc4e7c3db",
+      "x": 19,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f1dae3d0-6137-4b3d-9195-265f47b57521",
+      "x": 20,
+      "y": 1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "138ca2e1-cd20-43a8-9217-9dcbc11d06da",
+      "x": 19,
+      "y": 2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "4f4e0ee6-6c8e-45d4-aa3e-a77423b0659c",
+      "x": 18,
+      "y": 3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "79ba0e2b-1c9a-4dd6-8891-e75e3bb70e38",
+      "x": 14,
+      "y": -2,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "5daeafd3-05e9-4d34-8b63-defd70391519",
+        "name": "Uakasaxo",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6032e3f1-4623-4415-8aab-8868d2296651",
+      "x": 14,
+      "y": -5,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "dbb4056f-36f3-46ec-8990-a59794ddbf77",
+      "x": 13,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "281d1c57-29b4-462d-b32d-3a5643280788",
+      "x": 14,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a0ee05ce-3c70-4fe8-88f2-1ec552639785",
+      "x": 15,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7611707e-0ff7-48dd-b0f2-0604e4e6db66",
+      "x": 12,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "27fc85ae-af31-40f1-97a4-78009cc4f355",
+      "x": 13,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ff4bd318-721c-42a0-b317-c908176ab58b",
+      "x": 14,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "659e09fa-26de-4014-ad1c-bb6e3b1c46d8",
+      "x": 15,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7b599e02-e68b-46ed-891c-7dd06ae04160",
+      "x": 16,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0f4cfa8a-b451-450e-be54-8a2856113e8a",
+      "x": 13,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0c7eb3f6-3f2f-450c-ade2-8499db2775cd",
+      "x": 15,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d29ce0b0-c6eb-4187-bef0-fcdd9acd74f7",
+      "x": 14,
+      "y": -6,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f0a47111-f130-42d4-b473-4ec5555df679",
+      "x": 13,
+      "y": -5,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3c55a365-ff48-41d4-8c64-8dde974f5525",
+      "x": 15,
+      "y": -5,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6914797f-fdc0-4b60-85ef-3363136f9df7",
+      "x": 12,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c45a9603-92bc-4d62-82ed-9c93f91c3d10",
+      "x": 16,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2b4be2b5-a99c-4d4c-a633-e9818d3d86a1",
+      "x": 13,
+      "y": -6,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "664ac953-5320-4455-9f7b-5c2bb3642b89",
+      "x": 12,
+      "y": -5,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c9c5b533-676c-4212-8577-d4d3d9f76752",
+      "x": 11,
+      "y": -4,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "b939a75d-252a-46bd-825c-6bfb8b87c34e",
+        "name": "Joqikeyu",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2df0f2b7-bcf3-4eef-8439-52fc75fa5c1f",
+      "x": 12,
+      "y": -6,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "7d7f84d5-4a04-49ad-bbe9-68dc79fb4641",
+      "x": 11,
+      "y": -5,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "cc873a73-d072-4c87-a9bf-8a85758ac0c6",
+      "x": 11,
+      "y": -6,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a8119e19-6ca2-4aeb-bc68-49a41e373f4f",
+      "x": 10,
+      "y": -5,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c1e72f02-90db-4e96-955e-723f9ed817d1",
+      "x": 16,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d2e560eb-9138-442b-998a-26e304a6fcc9",
+      "x": 17,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a33d4d5c-6391-48b6-b743-e49aac686177",
+      "x": 17,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "67af806f-c376-466a-8979-d2087184f56a",
+      "x": 18,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c50a2f9e-c000-45f2-92ba-9e336ce87a55",
+      "x": 17,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "dedd30da-7b50-437d-8e56-a436833ab416",
+      "x": 18,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "fa2b250a-6f98-4e35-a29a-4ab6f2e3806a",
+      "x": 19,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "804469d6-fd69-4ff0-98fc-4f09c88ef5ba",
+      "x": 18,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "825a89f1-af55-4f61-8d93-5d3604061c2a",
+      "x": 19,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "bab8a7c6-33a8-4fee-9338-885c4909a50d",
+      "x": 20,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "e059074a-dd6f-4c6b-8813-566df998c4c9",
+      "x": 19,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "b6e2ec2f-2c32-4165-8f85-f256075aeca1",
+      "x": 19,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2462177d-e094-43a5-a2e5-bc6bdd7054fb",
+      "x": 20,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "d3ffe330-c8d0-45e5-a459-d83154ca82b9",
+      "x": 21,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "bd933d62-862a-4040-9d5e-43994db03a4a",
+      "x": 20,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "df26ed6d-22c3-4fbb-9396-0d760573e4e1",
+      "x": 20,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ebcc7773-e418-44cb-bae3-ad050decec76",
+      "x": 21,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "267e2e97-b578-4cea-9a57-77ea383e301b",
+      "x": 22,
+      "y": -2,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "8a1af1ad-f760-4399-a717-0bbd4561d178",
+        "name": "Gufa",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ff59dc93-fcef-4271-be5d-2cfc2e8779e3",
+      "x": 21,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "ef9de121-30f1-414b-a460-4ab4a818f74a",
+      "x": 20,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "3dadff9f-934c-423d-8e49-79df1e7fb568",
+      "x": 21,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "a5af3622-b4a2-4912-bfe8-f532739acf91",
+      "x": 22,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "170fef2f-b778-4b1c-976c-4178f95968a0",
+      "x": 23,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "40553672-3f8a-484b-88a3-a3203eef691f",
+      "x": 22,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "5fe74409-16fc-4405-900b-3af4727b44e9",
+      "x": 21,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "65ae494a-af48-4114-9708-034405a89c2b",
+      "x": 22,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "cf05ce87-cea4-4c39-b8ef-9d8c1eefd8e3",
+      "x": 23,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "1f861416-f98a-47d5-9944-d6e36636171c",
+      "x": 24,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "53a79b50-7b83-490e-9f67-6d46a8284e3f",
+      "x": 23,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "882a44a6-77fb-4113-b22c-e98ce9f11dee",
+      "x": 22,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "422f692a-f826-40c9-86b7-27ad51adecd1",
+      "x": 23,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "97b42c4a-7154-49d2-9dfa-bb6ef5f697fe",
+      "x": 24,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "c2f3130a-657a-4de4-80d6-dbcf6f2b8f93",
+      "x": 25,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "46a7e025-8325-4467-a82e-5f407126c3be",
+      "x": 24,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "fdf73006-c8b8-4c2a-ade9-f20c6a9d2ad8",
+      "x": 23,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0863d410-ee26-4fb4-956c-70786cd79b29",
+      "x": 24,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "f6c5c2ca-7c88-43fd-979b-a6782b620a91",
+      "x": 25,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "226328da-c4a0-4d33-b6ef-51ef08b70e44",
+      "x": 26,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "22c1dfc0-7e61-48fc-924e-eb05c999012f",
+      "x": 25,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6b941eee-e041-4a75-8462-6fea0c2f5c74",
+      "x": 24,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "10b35426-3f15-4324-a6bb-a64133474d4e",
+      "x": 25,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "2b4aa584-24e2-4818-b97b-0782d73851ba",
+      "x": 26,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "fa270014-a834-46d3-b504-f61e33c09363",
+      "x": 26,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "bafc50dd-ffb3-499e-aa27-e083a10778bd",
+      "x": 25,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "0a79175d-3e3c-4727-b0bf-b3457cfd2fd4",
+      "x": 27,
+      "y": -2,
+      "type": "SAND",
+      "zone": 2,
+      "ships": [],
+      "island": {
+        "id": "e9f87917-4696-44f5-8b39-1ffd5c2a7a35",
+        "name": "Zedi",
+        "bonusQuotient": 2
+      },
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "13a1ebf7-3eab-4efe-92d5-983c8b3e93ea",
+      "x": 26,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "559e60fb-470a-4df0-8c4e-eb55e2cb3b53",
+      "x": 27,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "5b0e0f30-140f-40ef-a24e-ab70d9af0095",
+      "x": 28,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "6183e358-61a4-42a3-9fbd-06c287f46427",
+      "x": 27,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "548a9b69-2b86-4a81-8cb7-75812410f6ac",
+      "x": 26,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "08d2d673-6fb2-4563-aea4-054e2b9b3a75",
+      "x": 27,
+      "y": -4,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "238e159f-b8b5-4045-8b41-7eb175915a26",
+      "x": 28,
+      "y": -3,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "baf766a8-f9af-4c3d-9799-0edee146bf6b",
+      "x": 29,
+      "y": -2,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "36d7f92d-2edf-4819-a3da-cd2874c4cbe3",
+      "x": 28,
+      "y": -1,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    },
+    {
+      "id": "9547b0c9-fbee-4c7a-a130-edc8683d5c44",
+      "x": 27,
+      "y": 0,
+      "type": "SEA",
+      "zone": 2,
+      "ships": [],
+      "stateEnum": "SEEN"
+    }
+  ],
+  "position": {
+    "id": "267e2e97-b578-4cea-9a57-77ea383e301b",
+    "x": 22,
+    "y": -2,
+    "type": "SAND",
+    "zone": 2,
+    "ships": [],
+    "island": {
+      "id": "8a1af1ad-f760-4399-a717-0bbd4561d178",
+      "name": "Gufa",
+      "bonusQuotient": 2
+    }
+  }
+}
