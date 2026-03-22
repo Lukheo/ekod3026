@@ -433,7 +433,11 @@ const KEY_TO_DIR = {
   s: "S",
   d: "E",
   a: "W",
-  q: "W",
+  e: "NE",
+  q: "NW",
+  z: "SW",
+  c: "SE",
+
 };
 
 // File d'attente des mouvements pendant qu'un appel est en cours
@@ -972,8 +976,8 @@ async function sell1000Feronium() {
   try {
     const offer = await api("POST", "/marketplace/offers", {
       resourceType: "FERONIUM",
-      quantityIn: 1000,
-      pricePerResource: 15,
+      quantityIn: 30000,
+      pricePerResource: 1,
     });
     notify("✅ Offre créée : 1000 FERONIUM à 15u", "success");
   } catch (e) {
@@ -1174,7 +1178,13 @@ async function loadTaxes() {
     const taxes = await api("GET", "/taxes?status=DUE");
     renderTaxes(taxes);
   } catch (e) {
-    notify(`❌ Taxes : ${e.message}`, "error");
+    // Essai sans filtre si le paramètre pose problème
+    try {
+      const all = await api("GET", "/taxes");
+      renderTaxes((all || []).filter(t => t.state === "DUE" || t.status === "DUE"));
+    } catch (e2) {
+      notify(`❌ Taxes : ${e2.message}`, "error");
+    }
   }
 }
 
@@ -1186,12 +1196,13 @@ function renderTaxes(taxes) {
     panel.innerHTML = `<p style="color:var(--text-muted);font-size:0.8rem;text-align:center;padding:8px">✅ Aucune taxe due</p>`;
     return;
   }
+  const TYPE_LABEL = { RESCUE: "🆘 Sauvetage", CHEAT: "🚫 Triche" };
   taxes.forEach((tax) => {
     const d = document.createElement("div");
     d.className = "offer-card";
     d.innerHTML = `
-      <div class="offer-type" style="color:#e74c3c">${tax.type}</div>
-      <div class="offer-details">Montant : <span style="color:var(--gold)">${tax.amount} 💰</span></div>
+      <div class="offer-type" style="color:#e74c3c">${TYPE_LABEL[tax.type] || tax.type || "Taxe"}</div>
+      <div class="offer-details">Montant : <span style="color:var(--gold)">${fmt(tax.amount)} 💰</span></div>
       ${tax.remainingTime > 0 ? `<div class="offer-details" style="color:#e74c3c">⏱ ${tax.remainingTime}s restantes</div>` : ""}
       <button class="btn" style="border-color:rgba(192,57,43,0.5);margin-top:6px" data-id="${tax.id}">
         💸 Payer

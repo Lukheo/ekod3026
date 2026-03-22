@@ -7,8 +7,8 @@ const fs = require("fs");
 const path = require("path");
 
 const PORT = 3001;
-const ROOT = __dirname;
-const MAP_FILE = path.join(ROOT, "map_memory.json");
+const ROOT = path.resolve(__dirname, "../../"); // racine ekod3026/
+const MAP_FILE = path.join(__dirname, "map_memory.json"); // assets/js/map_memory.json
 
 const MIME = {
   ".html": "text/html",
@@ -18,7 +18,13 @@ const MIME = {
   ".ico": "image/x-icon",
   ".png": "image/png",
   ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".gif": "image/gif",
   ".svg": "image/svg+xml",
+  ".webp": "image/webp",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2",
+  ".ttf": "font/ttf",
 };
 
 const CORS = {
@@ -135,12 +141,6 @@ http
 
     // ── Fichiers statiques ──────────────────────────────────────
     let filePath = url.pathname === "/" ? "/index.html" : url.pathname;
-
-    // Remappe les chemins assets/ vers la racine
-    filePath = filePath
-      .replace(/^\/assets\/css\//, "/")
-      .replace(/^\/assets\/js\//, "/");
-
     filePath = path.join(ROOT, filePath);
 
     if (!filePath.startsWith(ROOT)) {
