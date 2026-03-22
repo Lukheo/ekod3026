@@ -436,7 +436,7 @@ const KEY_TO_DIR = {
   e: "NE",
   q: "NW",
   z: "SW",
-  c: "SE",
+  c: "S",
 
 };
 
