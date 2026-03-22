@@ -1070,7 +1070,7 @@ canvas.addEventListener(
     e.preventDefault();
     // Zoom plus rapide quand on est déjà très dézoomé
     const delta = e.deltaY > 0 ? -Math.max(1, Math.floor(state.cellSize / 8)) : Math.max(1, Math.floor(state.cellSize / 8));
-    state.cellSize = Math.max(4, Math.min(72, state.cellSize + delta));
+    state.cellSize = Math.max(2, Math.min(72, state.cellSize + delta));
     markDirty();
   },
   { passive: false },
