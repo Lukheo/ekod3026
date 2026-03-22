@@ -20,7 +20,7 @@ const state = {
   gold: 0,
   quotient: 0,
   homeName: "—",
-  movesLeft: 0,
+  movesLeft: "?",
   position: null,
   lastSavedPosition: null,
   shipLevel: null,
@@ -63,21 +63,22 @@ async function api(method, path, body = null) {
 // MAP PERSISTENCE  (via serveur local localhost:3001)
 // ─────────────────────────────────────────────────────────────────────────────
 
-let _saveTimer = null;
+const _pendingCells = new Map();
+let _flushTimer = null;
 
-// Charge toute la carte depuis le serveur
 async function loadMapMemory() {
   try {
     const res = await fetch(`${SERVER}/map`);
     if (!res.ok) return;
     const data = await res.json();
-    if (Array.isArray(data.cells)) {
-      data.cells.forEach((cell) => {
+    if (Array.isArray(data.cells) && data.cells.length > 0) {
+      data.cells.forEach(cell => {
         state.cellMemory.set(`${cell.x},${cell.y}`, cell);
       });
     }
     if (data.position) {
       state.lastSavedPosition = data.position;
+      state.position = data.position;
     }
     if (data.cells?.length > 0) {
       notify(`🗺️ Carte restaurée (${data.cells.length} cellules)`, "info");
@@ -87,28 +88,28 @@ async function loadMapMemory() {
   }
 }
 
-// Sauvegarde toute la map + position (debouncée 1s)
 function saveMapMemory() {
-  clearTimeout(_saveTimer);
-  _saveTimer = setTimeout(async () => {
+  clearTimeout(_flushTimer);
+  _flushTimer = setTimeout(async () => {
+    const cells = Array.from(_pendingCells.values());
+    _pendingCells.clear();
     try {
-      const cells = Array.from(state.cellMemory.values());
       await fetch(`${SERVER}/map`, {
-        method: "POST",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cells, position: state.position }),
       });
     } catch {
       // Silencieux – pas bloquant
     }
-  }, 1000);
+  }, 1500);
 }
 
-// Efface la carte sauvegardée (bouton reset)
 async function clearMapMemory() {
   try {
     await fetch(`${SERVER}/map`, { method: "DELETE" });
     state.cellMemory.clear();
+    _pendingCells.clear();
     notify("🗑️ Carte réinitialisée", "info");
   } catch (e) {
     notify("Impossible de contacter le serveur : " + e.message, "error");
@@ -138,7 +139,7 @@ function resizeCanvas() {
   const area = document.getElementById("map-area");
   canvas.width = area.clientWidth;
   canvas.height = area.clientHeight;
-  drawMap();
+  // Ne pas relancer drawMap ici — la boucle rAF tourne déjà
 }
 
 function worldToScreen(wx, wy) {
@@ -224,7 +225,7 @@ function drawMap() {
   // Draw all remembered cells
   // Index nom → islandState depuis les îles découvertes du joueur
   const islandClaimMap = new Map();
-  state.discoveredIslands.forEach((di) => {
+  state.discoveredIslands.forEach(di => {
     if (di.island?.name) islandClaimMap.set(di.island.name, di.islandState);
   });
 
@@ -236,24 +237,24 @@ function drawMap() {
     // Pour les îles SAND : couleur selon état claim
     let fillColor, borderColor, borderWidth;
     if (cell.type === "SAND") {
-      const islandName = cell.island?.name;
-      const claimState = islandName ? islandClaimMap.get(islandName) : null;
+      const islandName  = cell.island?.name;
+      const claimState  = islandName ? islandClaimMap.get(islandName) : null;
       if (claimState === "KNOWN") {
-        fillColor = "#2d6e1a"; // vert foncé = claimée
+        fillColor   = "#2d6e1a";  // vert foncé = claimée
         borderColor = "#5dbd30";
         borderWidth = 1.5;
       } else if (claimState === "DISCOVERED") {
-        fillColor = "#7a6010"; // or foncé = vue non claimée
+        fillColor   = "#7a6010";  // or foncé = vue non claimée
         borderColor = "#f0b429";
         borderWidth = 1.5;
       } else {
-        fillColor = "#7a5c1e"; // sable neutre = inconnue
+        fillColor   = "#7a5c1e";  // sable neutre = inconnue
         borderColor = "#a07830";
         borderWidth = 0.5;
       }
     } else {
       const colors = CELL_COLORS[cell.type] || CELL_COLORS.SEA;
-      fillColor = colors.base;
+      fillColor   = colors.base;
       borderColor = colors.border;
       borderWidth = 0.5;
     }
@@ -263,11 +264,7 @@ function drawMap() {
     ctx.fillRect(sx - cs / 2 + 0.5, sy - cs / 2 + 0.5, cs - 1, cs - 1);
 
     // State overlay (mer uniquement)
-    if (
-      cell.type !== "SAND" &&
-      cell.stateEnum &&
-      STATE_OVERLAYS[cell.stateEnum]
-    ) {
+    if (cell.type !== "SAND" && cell.stateEnum && STATE_OVERLAYS[cell.stateEnum]) {
       ctx.fillStyle = STATE_OVERLAYS[cell.stateEnum];
       ctx.fillRect(sx - cs / 2 + 0.5, sy - cs / 2 + 0.5, cs - 1, cs - 1);
     }
@@ -286,9 +283,9 @@ function drawMap() {
       if (cell.type === "SAND") {
         const islandName = cell.island?.name;
         const claimState = islandName ? islandClaimMap.get(islandName) : null;
-        if (claimState === "KNOWN") icon = "✅";
+        if      (claimState === "KNOWN")      icon = "✅";
         else if (claimState === "DISCOVERED") icon = "👁️";
-        else icon = "🏝";
+        else                                  icon = "🏝";
       } else if (cell.type === "ROCKS") {
         icon = "🪨";
       }
@@ -357,17 +354,30 @@ function drawMap() {
   requestAnimationFrame(drawMap);
 }
 
+// Lance la boucle de rendu une seule fois
+let _rafStarted = false;
+function startRenderLoop() {
+  if (_rafStarted) return;
+  _rafStarted = true;
+  requestAnimationFrame(drawMap);
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // UPDATE CELLS IN MEMORY
 // ─────────────────────────────────────────────────────────────────────────────
 function mergeCells(cells, stateEnum = null) {
-  cells.forEach((cell) => {
+  cells.forEach(cell => {
     const key = `${cell.x},${cell.y}`;
     const existing = state.cellMemory.get(key) || {};
     const newState = stateEnum || existing.stateEnum || "VISITED";
-    state.cellMemory.set(key, { ...existing, ...cell, stateEnum: newState });
+    const changed = !existing.type
+      || existing.stateEnum !== newState
+      || existing.ships?.length !== cell.ships?.length;
+    const merged = { ...existing, ...cell, stateEnum: newState };
+    state.cellMemory.set(key, merged);
+    if (changed) _pendingCells.set(key, merged);
   });
-  saveMapMemory();
+  if (_pendingCells.size > 0) saveMapMemory();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -386,50 +396,73 @@ const KEY_TO_DIR = {
   q: "W",
 };
 
+// File d'attente des mouvements pendant qu'un appel est en cours
+let _moveQueue = null;
+let _cooldownStart = null;
+let _cooldownDuration = 0;
+
+function showCooldown(ms) {
+  _cooldownStart = Date.now();
+  _cooldownDuration = ms;
+  const el = document.getElementById("movesLeft");
+  if (!el) return;
+  const tick = () => {
+    const elapsed = Date.now() - _cooldownStart;
+    const remaining = Math.max(0, _cooldownDuration - elapsed);
+    if (remaining > 0) {
+      el.textContent = `⏳ ${(remaining / 1000).toFixed(1)}s`;
+      requestAnimationFrame(tick);
+    } else {
+      el.textContent = state.movesLeft ?? "?";
+    }
+  };
+  requestAnimationFrame(tick);
+}
+
 async function moveShip(direction) {
-  if (state.moving) return;
-  if (state.movesLeft !== "?" && state.movesLeft <= 0) {
-    notify("Plus de mouvements disponibles !", "error");
+  if (state.movesLeft !== "?" && state.movesLeft !== undefined && state.movesLeft <= 0) return;
+
+  // Si un mouvement est déjà en cours, on mémorise le dernier demandé
+  if (state.moving) {
+    _moveQueue = direction;
     return;
   }
   state.moving = true;
+  _moveQueue = null;
 
-  // Flash the arrow button
-  const dirBtnMap = {
-    N: "btn-N",
-    S: "btn-S",
-    E: "btn-E",
-    W: "btn-W",
-    NE: "btn-NE",
-    NW: "btn-NW",
-    SE: "btn-SE",
-    SW: "btn-SW",
-  };
+  const dirBtnMap = { N:"btn-N", S:"btn-S", E:"btn-E", W:"btn-W", NE:"btn-NE", NW:"btn-NW", SE:"btn-SE", SW:"btn-SW" };
   const btnEl = document.getElementById(dirBtnMap[direction]);
-  if (btnEl) {
-    btnEl.classList.add("active");
-    setTimeout(() => btnEl.classList.remove("active"), 250);
-  }
+  if (btnEl) { btnEl.classList.add("active"); setTimeout(() => btnEl.classList.remove("active"), 250); }
 
+  const t0 = Date.now();
   try {
     const data = await api("POST", "/ship/move", { direction });
+    const elapsed = Date.now() - t0;
     state.position = data.position;
     state.movesLeft = data.energy;
 
-    if (data.discoveredCells?.length) {
-      mergeCells(data.discoveredCells, "SEEN");
-    }
-    if (data.position) {
-      mergeCells([data.position], "SEEN");
-    }
-    // saveMapMemory() est déjà appelé dans mergeCells ci-dessus
+    if (data.discoveredCells?.length) mergeCells(data.discoveredCells, "SEEN");
+    if (data.position) mergeCells([data.position], "SEEN");
 
     updateHUD();
-    centerView();
+
+    // Afficher un cooldown visuel si l'appel a été rapide (évite le spam)
+    const MIN_INTERVAL = 300;
+    const wait = Math.max(0, MIN_INTERVAL - elapsed);
+    if (wait > 0) {
+      showCooldown(wait);
+      await new Promise(r => setTimeout(r, wait));
+    }
   } catch (e) {
     notify(`❌ ${e.message}`, "error");
   } finally {
     state.moving = false;
+    // Exécuter le mouvement en attente s'il y en a un
+    if (_moveQueue) {
+      const next = _moveQueue;
+      _moveQueue = null;
+      moveShip(next);
+    }
   }
 }
 
@@ -455,19 +488,63 @@ function fmt(n) {
 
 function updateHUD() {
   if (state.movesLeft !== undefined) setEl("movesLeft", state.movesLeft);
-  if (state.resources.BOISIUM !== undefined)
-    setEl("qty-BOISIUM", fmt(state.resources.BOISIUM));
-  if (state.resources.FERONIUM !== undefined)
-    setEl("qty-FERONIUM", fmt(state.resources.FERONIUM));
-  if (state.resources.CHARBONIUM !== undefined)
-    setEl("qty-CHARBONIUM", fmt(state.resources.CHARBONIUM));
-  if (state.gold !== undefined) setEl("currentGold", fmt(state.gold) + " 💰");
-  if (state.homeName !== undefined) setEl("homeName", state.homeName);
+
+  // ✅ NOUVEAU : affichage quantité / max
+  ["BOISIUM", "FERONIUM", "CHARBONIUM"].forEach((type) => {
+    const qty = state.resources[type];
+    const max = state.currentStorageLevel?.maxResources?.[type];
+
+    if (qty !== undefined) {
+      const text = max
+        ? `${fmt(qty)} / ${fmt(max)}`
+        : fmt(qty);
+
+      setEl(`qty-${type}`, text);
+    }
+  });
+
+  if (state.gold !== undefined)
+    setEl("currentGold", fmt(state.gold) + " 💰");
+
+  if (state.homeName !== undefined)
+    setEl("homeName", state.homeName);
+
+  // ⚠️ Tu peux garder ou supprimer ce bloc (inutile maintenant)
+  /*
+  const cur = state.currentStorageLevel;
+  if (cur?.maxResources) {
+    setEl("max-BOISIUM", fmt(cur.maxResources.BOISIUM));
+    setEl("max-FERONIUM", fmt(cur.maxResources.FERONIUM));
+    setEl("max-CHARBONIUM", fmt(cur.maxResources.CHARBONIUM));
+  }
+  */
+
+  // Production
+  const BASE = 10;
+  const qMult = 1 + (state.quotient || 0) / 100;
+  const totalProd = state.discoveredIslands
+    .filter((d) => d.islandState === "KNOWN")
+    .reduce(
+      (sum, d) =>
+        sum +
+        Math.round(
+          BASE *
+            qMult *
+            (1 + (d.island?.bonusQuotient || 0) / 100)
+        ),
+      0
+    );
+
+  const prodEl = document.getElementById("prod-FERONIUM");
+  if (prodEl)
+    prodEl.textContent =
+      totalProd > 0 ? `+${fmt(totalProd)}/min` : "";
 
   renderStorageUpgrade();
   renderShipUpgrade();
   renderIslands();
 }
+
 
 function renderStorageUpgrade() {
   const nl = state.nextStorageLevel;
@@ -526,10 +603,14 @@ function renderIslands() {
 // ─────────────────────────────────────────────────────────────────────────────
 async function loadPlayerDetails() {
   const details = await api("GET", "/players/details");
+
   state.gold = details.money;
   state.homeName = details.home?.name || "—";
   state.discoveredIslands = details.discoveredIslands || [];
-  // Resources from details
+
+  // ✅ AJOUT IMPORTANT
+  state.currentStorageLevel = details.storage;
+
   if (details.resources) {
     details.resources.forEach((r) => {
       state.resources[r.type] = r.quantity;
@@ -824,39 +905,28 @@ function setupArrowButtons() {
 // INIT
 // ─────────────────────────────────────────────────────────────────────────────
 async function init() {
-  try {
-    // 1. Restaurer la carte sauvegardée EN PREMIER (avant tout appel API)
-    await loadMapMemory();
+  // 1. Map + rendu : immédiat
+  await loadMapMemory();
+  startRenderLoop();
 
-    // 2. Load player info
-    await loadPlayerDetails();
-    await loadResources();
-    await loadNextLevels();
-
-    // 3. Position : depuis la sauvegarde si dispo, sinon inconnue
-    if (state.lastSavedPosition) {
-      state.position = state.lastSavedPosition;
-      state.movesLeft = "?";
-    } else {
-      // Première fois : construire le bateau si besoin
-      try {
-        await api("POST", "/ship/build");
-        notify(
-          "⛵ Bateau construit ! Appuyez sur une flèche pour démarrer.",
-          "success",
-        );
-      } catch {
-        /* bateau existe déjà */
+  // 2. Tout le reste en arrière-plan sans bloquer
+  (async () => {
+    try {
+      await loadPlayerDetails();
+      await loadResources();
+      await loadNextLevels();
+      if (!state.position) {
+        try {
+          await api("POST", "/ship/build");
+          notify("⛵ Bateau construit ! Appuyez sur une flèche pour démarrer.", "success");
+        } catch { /* bateau existe déjà */ }
       }
-      state.position = null;
-      state.movesLeft = "?";
+      updateHUD();
+      setTimeout(loadTaxes, 0);
+    } catch (e) {
+      notify("Erreur d'initialisation : " + e.message, "error");
     }
-
-    updateHUD();
-    drawMap();
-  } catch (e) {
-    notify("Erreur d'initialisation : " + e.message, "error");
-  }
+  })();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -989,6 +1059,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 30000);
 
   init();
-  // Charger les taxes dès le démarrage
-  setTimeout(loadTaxes, 500);
 });

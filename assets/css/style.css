@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
   --ocean-deep: #0a1628;
@@ -36,7 +36,7 @@
 }
 
 body {
-  font-family: "Crimson Text", Georgia, serif;
+  font-family: 'Crimson Text', Georgia, serif;
   background: var(--ocean-deep);
   color: var(--text-light);
   height: 100vh;
@@ -44,16 +44,8 @@ body {
   display: flex;
   flex-direction: column;
   background-image:
-    radial-gradient(
-      ellipse at 20% 50%,
-      rgba(26, 58, 92, 0.3) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 80% 20%,
-      rgba(10, 36, 64, 0.4) 0%,
-      transparent 50%
-    );
+    radial-gradient(ellipse at 20% 50%, rgba(26, 58, 92, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(10, 36, 64, 0.4) 0%, transparent 50%);
 }
 
 /* ─── TOPBAR ─────────────────────────────────────────────── */
@@ -63,11 +55,7 @@ body {
   justify-content: space-between;
   padding: 0 20px;
   height: 52px;
-  background: linear-gradient(
-    180deg,
-    rgba(5, 15, 30, 0.98) 0%,
-    rgba(10, 22, 40, 0.95) 100%
-  );
+  background: linear-gradient(180deg, rgba(5,15,30,0.98) 0%, rgba(10,22,40,0.95) 100%);
   border-bottom: 1px solid var(--panel-border);
   flex-shrink: 0;
   position: relative;
@@ -75,18 +63,17 @@ body {
 }
 
 #topbar::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -2px;
-  left: 0;
-  right: 0;
+  left: 0; right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--sea-foam), transparent);
   opacity: 0.4;
 }
 
 #game-title {
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   font-weight: 900;
   font-size: 1.1rem;
   letter-spacing: 0.12em;
@@ -102,9 +89,7 @@ body {
   color: var(--text-muted);
 }
 
-#topbar-left .sep {
-  opacity: 0.3;
-}
+#topbar-left .sep { opacity: 0.3; }
 
 #homeName {
   color: var(--sand-light);
@@ -120,16 +105,28 @@ body {
 .top-res {
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.04);
+  gap: 4px;
+  background: rgba(255,255,255,0.04);
   padding: 4px 12px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  font-family: "Cinzel", serif;
+  border: 1px solid rgba(255,255,255,0.06);
+  font-family: 'Cinzel', serif;
   font-size: 0.85rem;
   color: var(--text-light);
   min-width: 80px;
   justify-content: center;
+}
+
+.res-max {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.res-prod {
+  font-size: 0.7rem;
+  color: #5dade2;
+  margin-left: 2px;
 }
 
 #topbar-right {
@@ -139,7 +136,7 @@ body {
 
 #topbar-right strong {
   color: var(--gold);
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
 }
 
 /* ─── MAIN LAYOUT ──────────────────────────────────────────── */
@@ -173,7 +170,7 @@ aside {
 }
 
 .panel-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255,255,255,0.03);
   border: 1px solid rgba(74, 144, 184, 0.2);
   border-radius: 10px;
   padding: 14px;
@@ -183,7 +180,7 @@ aside {
 }
 
 .panel-title {
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   font-size: 0.78rem;
   letter-spacing: 0.1em;
   color: var(--sea-foam);
@@ -208,12 +205,11 @@ aside {
 }
 
 .upgrade-item span:last-child {
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   color: var(--gold);
 }
 
-#upgrade-cost,
-#upgrade-ship-cost {
+#upgrade-cost, #upgrade-ship-cost {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -226,20 +222,15 @@ aside {
   justify-content: space-between;
   padding: 2px 4px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255,255,255,0.03);
 }
 
-.cost-line.affordable {
-  color: #5dade2;
-}
-.cost-line.expensive {
-  color: var(--red-danger);
-}
+.cost-line.affordable { color: #5dade2; }
+.cost-line.expensive { color: var(--red-danger); }
 
 /* ─── BUTTONS ──────────────────────────────────────────────── */
-.btn,
-.btn-blue {
-  font-family: "Cinzel", serif;
+.btn, .btn-blue {
+  font-family: 'Cinzel', serif;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   padding: 8px 12px;
@@ -276,8 +267,7 @@ aside {
   transform: translateY(-1px);
 }
 
-.btn:disabled,
-.btn-blue:disabled {
+.btn:disabled, .btn-blue:disabled {
   opacity: 0.4;
   cursor: not-allowed;
   transform: none;
@@ -311,26 +301,13 @@ aside {
   z-index: 100;
   backdrop-filter: blur(8px);
   min-width: 120px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
-.tooltip.visible {
-  display: block;
-}
-.tooltip-type {
-  font-family: "Cinzel", serif;
-  font-size: 0.75rem;
-  color: var(--sea-foam);
-}
-.tooltip-coords {
-  color: var(--text-muted);
-  font-size: 0.78rem;
-}
-.tooltip-state {
-  font-style: italic;
-  color: var(--sand-light);
-  font-size: 0.78rem;
-}
+.tooltip.visible { display: block; }
+.tooltip-type { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--sea-foam); }
+.tooltip-coords { color: var(--text-muted); font-size: 0.78rem; }
+.tooltip-state { font-style: italic; color: var(--sand-light); font-size: 0.78rem; }
 
 /* ─── OFFERS ───────────────────────────────────────────────── */
 #offers-panel {
@@ -341,19 +318,12 @@ aside {
   overflow-y: auto;
 }
 
-#offers-panel::-webkit-scrollbar {
-  width: 4px;
-}
-#offers-panel::-webkit-scrollbar-track {
-  background: transparent;
-}
-#offers-panel::-webkit-scrollbar-thumb {
-  background: var(--panel-border);
-  border-radius: 2px;
-}
+#offers-panel::-webkit-scrollbar { width: 4px; }
+#offers-panel::-webkit-scrollbar-track { background: transparent; }
+#offers-panel::-webkit-scrollbar-thumb { background: var(--panel-border); border-radius: 2px; }
 
 .offer-card {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255,255,255,0.04);
   border: 1px solid rgba(74, 144, 184, 0.15);
   border-radius: 6px;
   padding: 8px 10px;
@@ -361,7 +331,7 @@ aside {
 }
 
 .offer-card .offer-type {
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
   font-size: 0.72rem;
   color: var(--sea-foam);
 }
@@ -402,45 +372,22 @@ aside {
   padding: 10px 16px;
   font-size: 0.85rem;
   text-align: center;
-  animation:
-    notifIn 0.3s ease,
-    notifOut 0.3s ease 2.7s forwards;
+  animation: notifIn 0.3s ease, notifOut 0.3s ease 2.7s forwards;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 
-.notif.success {
-  border: 1px solid rgba(46, 204, 113, 0.5);
-  color: #2ecc71;
-}
-.notif.error {
-  border: 1px solid rgba(192, 57, 43, 0.5);
-  color: #e74c3c;
-}
-.notif.info {
-  border: 1px solid var(--panel-border);
-  color: var(--sea-foam);
-}
+.notif.success { border: 1px solid rgba(46, 204, 113, 0.5); color: #2ecc71; }
+.notif.error { border: 1px solid rgba(192, 57, 43, 0.5); color: #e74c3c; }
+.notif.info { border: 1px solid var(--panel-border); color: var(--sea-foam); }
 
 @keyframes notifIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 @keyframes notifOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
 }
 
 /* ─── CONTROLS HINT ────────────────────────────────────────── */
@@ -486,18 +433,13 @@ aside {
   user-select: none;
 }
 
-.arrow-key:hover,
-.arrow-key.active {
+.arrow-key:hover, .arrow-key.active {
   background: rgba(42, 100, 150, 0.5);
   border-color: var(--sea-foam);
   color: var(--text-light);
 }
 
-.arrow-key.empty {
-  background: transparent;
-  border: none;
-  pointer-events: none;
-}
+.arrow-key.empty { background: transparent; border: none; pointer-events: none; }
 
 /* ─── ISLAND LIST ──────────────────────────────────────────── */
 .island-item {
@@ -506,7 +448,7 @@ aside {
   align-items: center;
   padding: 4px 6px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255,255,255,0.03);
   font-size: 0.8rem;
 }
 
@@ -514,33 +456,18 @@ aside {
   font-size: 0.7rem;
   padding: 2px 6px;
   border-radius: 10px;
-  font-family: "Cinzel", serif;
+  font-family: 'Cinzel', serif;
 }
 
-.island-state.KNOWN {
-  background: rgba(46, 204, 113, 0.15);
-  color: #2ecc71;
-}
-.island-state.DISCOVERED {
-  background: rgba(241, 196, 15, 0.15);
-  color: #f1c40f;
-}
+.island-state.KNOWN { background: rgba(46, 204, 113, 0.15); color: #2ecc71; }
+.island-state.DISCOVERED { background: rgba(241, 196, 15, 0.15); color: #f1c40f; }
 
 /* ─── SCROLLBAR ────────────────────────────────────────────── */
-aside::-webkit-scrollbar {
-  width: 4px;
-}
-aside::-webkit-scrollbar-track {
-  background: transparent;
-}
-aside::-webkit-scrollbar-thumb {
-  background: var(--panel-border);
-  border-radius: 2px;
-}
+aside::-webkit-scrollbar { width: 4px; }
+aside::-webkit-scrollbar-track { background: transparent; }
+aside::-webkit-scrollbar-thumb { background: var(--panel-border); border-radius: 2px; }
 
 /* ─── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 900px) {
-  aside {
-    width: 180px;
-  }
+  aside { width: 180px; }
 }
